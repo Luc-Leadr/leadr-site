@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valider un marché · Leadr</title>
+<meta name="description" content="Vérifier le potentiel réaliste d'une offre sur un nouveau marché avant d'engager des ressources significatives.">
+<link rel="canonical" href="https://leadr.ch/validation-marche.html">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-bar">
+    <a href="index.html" class="logo"><span class="lead">Lead</span><span class="r">r</span></a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="implantation.html">S'implanter</a></li>
+      <li><a href="developpement-commercial.html">Se développer</a></li>
+      <li><a href="methode.html">Méthode</a></li>
+      <li><a href="ressources.html">Ressources</a></li>
+      <li><a href="leadr.html">LEADR</a></li>
+      <li class="nav-cta"><a href="contact.html" class="btn btn-primary">Parler de votre projet</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow">Avant d'engager des ressources</p>
+      <h1>Valider un marché</h1>
+      <p class="lede">Vérifier si une offre a un potentiel réaliste sur un nouveau marché avant d'engager des ressources significatives : réceptivité du marché, positionnement face à la concurrence locale, premiers signaux commerciaux.</p>
+      <div class="btn-row"><a href="contact.html" class="btn btn-primary">Parler de votre projet</a></div>
+    </div>
+  </section>
+
+  <section class="section-border-top">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Le principe</p>
+        <h2>Valider avant de structurer, chaque fois que possible</h2>
+        <p class="lede">Dans la mesure du possible, la réalité commerciale du marché visé est vérifiée avant d'engager des coûts fixes importants. Certaines activités, certaines réglementations ou certains modèles économiques peuvent toutefois demander une structuration locale plus tôt : dans ce cas, la structuration fait partie de la feuille de route dès le départ.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card"><h3>Réceptivité du marché</h3><p>Premiers retours sur l'offre auprès d'interlocuteurs locaux pertinents.</p></div>
+        <div class="card"><h3>Positionnement local</h3><p>Lecture de l'offre face à la concurrence déjà présente sur le marché visé.</p></div>
+        <div class="card"><h3>Canaux d'accès</h3><p>Identification des canaux pertinents selon la région et le secteur concernés.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-border-top">
+    <div class="container">
+      <div class="cta-band">
+        <div><h2>Vérifier le potentiel de votre offre</h2><p>Ce sujet se cadre dès le premier échange.</p></div>
+        <a href="session-cadrage.html" class="btn btn-primary">Réserver une session de cadrage</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo footer-logo"><span class="lead">Lead</span><span class="r">r</span></a>
+        <p style="margin-top:14px; font-size:14px; color:#cfcac0;">Développer et structurer une présence entre la France et la Suisse.</p>
+        <p style="font-size:13.5px; color:#9b968c; margin-bottom:4px;">Bâle, Suisse</p>
+        <p style="font-size:13.5px; color:#9b968c;"><a href="mailto:lrohmer@leadr.ch">lrohmer@leadr.ch</a></p>
+      </div>
+      <div>
+        <h4>Votre projet</h4>
+        <ul>
+          <li><a href="implantation.html">S'implanter</a></li>
+          <li><a href="developpement-commercial.html">Se développer</a></li>
+          <li><a href="validation-marche.html">Valider un marché</a></li>
+          <li><a href="relocalisation.html">Relocalisation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Approche</h4>
+        <ul>
+          <li><a href="methode.html">Méthode</a></li>
+          <li><a href="session-cadrage.html">Session de cadrage</a></li>
+          <li><a href="management-transition.html">Management de transition</a></li>
+          <li><a href="partenaires.html">Partenaires</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Leadr</h4>
+        <ul>
+          <li><a href="offre-pme-pmi.html">Offre PME/PMI</a></li>
+          <li><a href="offre-eti-grands-comptes.html">Offre ETI & Grands comptes</a></li>
+          <li><a href="cas-clients.html">Cas clients</a></li>
+          <li><a href="ressources.html">Ressources</a></li>
+          <li><a href="leadr.html">LEADR</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Leadr GmbH. Tous droits réservés.</span>
+      <span>Bâle, Suisse</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', function () {
+    var open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+</script>
+
+</body>
+</html>

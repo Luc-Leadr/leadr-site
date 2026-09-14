@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact · Leadr</title>
+<meta name="description" content="Prendre contact avec Leadr pour un projet de validation, développement, implantation ou relocalisation entre la France et la Suisse.">
+<link rel="canonical" href="https://leadr.ch/contact.html">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-bar">
+    <a href="index.html" class="logo"><span class="lead">Lead</span><span class="r">r</span></a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="implantation.html">S'implanter</a></li>
+      <li><a href="developpement-commercial.html">Se développer</a></li>
+      <li><a href="methode.html">Méthode</a></li>
+      <li><a href="ressources.html">Ressources</a></li>
+      <li><a href="leadr.html">LEADR</a></li>
+      <li class="nav-cta"><a href="contact.html" class="btn btn-primary" aria-current="page">Parler de votre projet</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow">Prendre contact</p>
+      <h1>Parler de votre projet</h1>
+      <p class="lede">Un message suffit pour démarrer l'échange. La réponse porte sur la faisabilité de votre projet et les prochaines étapes possibles.</p>
+    </div>
+  </section>
+
+  <section class="section-border-top">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <!--
+            Formulaire branché sur un service tiers gratuit (Formspree), sans stockage de données côté site.
+            À faire avant la mise en ligne : créer un compte sur https://formspree.io, créer un formulaire,
+            puis remplacer "VOTRE_ID_FORMSPREE" ci-dessous par l'identifiant fourni.
+          -->
+          <form action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST">
+            <div class="form-row">
+              <div><label for="nom">Nom</label><input type="text" id="nom" name="nom" required></div>
+              <div><label for="entreprise">Entreprise</label><input type="text" id="entreprise" name="entreprise" required></div>
+            </div>
+            <div class="form-row">
+              <div><label for="email">Email</label><input type="email" id="email" name="email" required></div>
+              <div><label for="telephone">Téléphone (facultatif)</label><input type="tel" id="telephone" name="telephone"></div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label for="type_projet">Type de projet</label>
+                <select id="type_projet" name="type_projet" required>
+                  <option value="">Sélectionner</option>
+                  <option>Validation de marché</option>
+                  <option>Développement commercial</option>
+                  <option>Implantation</option>
+                  <option>Relocalisation</option>
+                  <option>Session de cadrage</option>
+                  <option>Autre</option>
+                </select>
+              </div>
+              <div>
+                <label for="stade_projet">Stade du projet</label>
+                <select id="stade_projet" name="stade_projet" required>
+                  <option value="">Sélectionner</option>
+                  <option>Réflexion</option>
+                  <option>Validation</option>
+                  <option>Lancement</option>
+                  <option>Déjà présent sur le marché visé</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="Quelques lignes sur votre projet."></textarea>
+            </div>
+            <label style="font-weight:400; font-size:13.5px; display:flex; gap:8px; align-items:flex-start;">
+              <input type="checkbox" name="consentement" required style="width:auto; margin-top:3px;">
+              <span>J'accepte que ces informations soient utilisées par Leadr pour répondre à ma demande.</span>
+            </label>
+            <div class="btn-row"><button type="submit" class="btn btn-primary">Envoyer le message</button></div>
+          </form>
+        </div>
+
+        <div>
+          <div class="card-flush">
+            <h3>Coordonnées</h3>
+            <p style="margin-bottom:6px;"><strong>Leadr GmbH</strong><br>Bâle, Suisse</p>
+            <p style="margin-bottom:6px;"><a href="mailto:lrohmer@leadr.ch">lrohmer@leadr.ch</a></p>
+            <!-- Remplacer par l'URL réelle de la page LinkedIn Leadr avant mise en ligne -->
+            <p><a href="https://www.linkedin.com" target="_blank" rel="noopener">Suivre Leadr sur LinkedIn</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo footer-logo"><span class="lead">Lead</span><span class="r">r</span></a>
+        <p style="margin-top:14px; font-size:14px; color:#cfcac0;">Développer et structurer une présence entre la France et la Suisse.</p>
+        <p style="font-size:13.5px; color:#9b968c; margin-bottom:4px;">Bâle, Suisse</p>
+        <p style="font-size:13.5px; color:#9b968c;"><a href="mailto:lrohmer@leadr.ch">lrohmer@leadr.ch</a></p>
+      </div>
+      <div>
+        <h4>Votre projet</h4>
+        <ul>
+          <li><a href="implantation.html">S'implanter</a></li>
+          <li><a href="developpement-commercial.html">Se développer</a></li>
+          <li><a href="validation-marche.html">Valider un marché</a></li>
+          <li><a href="relocalisation.html">Relocalisation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Approche</h4>
+        <ul>
+          <li><a href="methode.html">Méthode</a></li>
+          <li><a href="session-cadrage.html">Session de cadrage</a></li>
+          <li><a href="management-transition.html">Management de transition</a></li>
+          <li><a href="partenaires.html">Partenaires</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Leadr</h4>
+        <ul>
+          <li><a href="offre-pme-pmi.html">Offre PME/PMI</a></li>
+          <li><a href="offre-eti-grands-comptes.html">Offre ETI & Grands comptes</a></li>
+          <li><a href="cas-clients.html">Cas clients</a></li>
+          <li><a href="ressources.html">Ressources</a></li>
+          <li><a href="leadr.html">LEADR</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Leadr GmbH. Tous droits réservés.</span>
+      <span>Bâle, Suisse</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', function () {
+    var open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+</script>
+
+</body>
+</html>
