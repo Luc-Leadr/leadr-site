@@ -29,10 +29,11 @@ ORG_LD = json.dumps({"@context": "https://schema.org", "@type": "Organization", 
 
 def head(title, desc, slug):
     return f'''<!doctype html>
-<html lang="fr">
+<html lang="fr" translate="no" class="notranslate">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google" content="notranslate">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta property="og:title" content="{title}">
@@ -708,7 +709,7 @@ def localize(doc, lg, slug):
             p = re.sub(r'((?:content|alt|aria-label|title)=")([^"]+)(")', lambda m: m.group(1) + html.escape(tr(html.unescape(m.group(2)))) + m.group(3), p)
             out.append(p)
     doc = ''.join(out)
-    doc = doc.replace('<html lang="fr">', f'<html lang="{lg}">').replace('content="fr_CH"', f'content="{LOCALE[lg]}"')
+    doc = doc.replace('<html lang="fr" ', f'<html lang="{lg}" ').replace('content="fr_CH"', f'content="{LOCALE[lg]}"')
     doc = doc.replace(f'href="https://www.leadr.ch/{pub}"', f'href="https://www.leadr.ch/{lg}/{pub}"').replace(f'content="https://www.leadr.ch/{pub}"', f'content="https://www.leadr.ch/{lg}/{pub}"')
     doc = doc.replace(f'hreflang="x-default" href="https://www.leadr.ch/{lg}/{pub}"', f'hreflang="x-default" href="https://www.leadr.ch/{pub}"').replace(f'hreflang="fr" href="https://www.leadr.ch/{lg}/{pub}"', f'hreflang="fr" href="https://www.leadr.ch/{pub}"')
     doc = doc.replace('og-image.png', f'og-image-{lg}.png')
