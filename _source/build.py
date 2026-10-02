@@ -26,7 +26,7 @@ CHEV = '<svg class="chev" viewBox="0 0 12 12" width="12" height="12" aria-hidden
 e = lambda s: s  # textes déjà maîtrisés (HTML autorisé dans les contenus)
 
 # ------------------------------------------------------------------ gabarit
-ORG_LD = json.dumps({"@context": "https://schema.org", "@type": "Organization", "name": "Leadr GmbH", "url": "https://www.leadr.ch/",
+ORG_LD = json.dumps({"@context": "https://schema.org", "@type": ["Organization", "ProfessionalService"], "name": "Leadr GmbH", "url": "https://www.leadr.ch/", "image": "https://www.leadr.ch/og-image.png",
   "logo": "https://www.leadr.ch/logo.png", "email": EMAIL, "telephone": "+41 76 650 42 64",
   "address": {"@type": "PostalAddress", "streetAddress": "Sternengasse 6", "postalCode": "4051", "addressLocality": "Bâle", "addressCountry": "CH"},
   "employee": {"@type": "Person", "name": "Luc Rohmer", "jobTitle": "CEO", "sameAs": [LINKEDIN]}, "areaServed": ["CH", "FR"],
@@ -53,9 +53,13 @@ def head(title, desc, slug):
 <script type="application/ld+json">{ORG_LD}</script>
 <meta property="og:url" content="https://www.leadr.ch/{'' if slug=='index.html' else slug}">
 <link rel="canonical" href="https://www.leadr.ch/{'' if slug=='index.html' else slug}">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="css/style.css">
-<script src="js/main.js" defer></script>
+<link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/arimo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css?v=2.21">
+<script src="js/main.js?v=2.21" defer></script>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -96,10 +100,11 @@ FOOT = f'''</main>
       <div><h2>Directions</h2><ul>
         <li><a href="vers-la-suisse.html">Vers la Suisse</a></li><li><a href="vers-la-france.html">Vers la France</a></li><li><a href="entre-regions-suisses.html">Entre régions suisses</a></li></ul></div>
       <div><h2>Services</h2><ul>
-        <li><a href="methode.html">Méthode</a></li><li><a href="premier-rendez-vous.html">Premier rendez-vous</a></li><li><a href="implantation.html">Implantation</a></li><li><a href="relocalisation.html">Relocalisation</a></li><li><a href="management-transition.html">Management de transition</a></li></ul></div>
+        <li><a href="formats.html">Formats d'intervention</a></li><li><a href="methode.html">Méthode</a></li><li><a href="premier-rendez-vous.html">Premier rendez-vous</a></li><li><a href="implantation.html">Implantation</a></li><li><a href="relocalisation.html">Relocalisation</a></li><li><a href="management-transition.html">Management de transition</a></li></ul></div>
       <div><h2>Leadr</h2><ul>
         <li><a href="leadr.html">Qui sommes-nous</a></li><li><a href="cas-clients.html">Cas clients</a></li><li><a href="reperes.html">Repères</a></li><li><a href="contact.html">Prendre rendez-vous</a></li><li><a href="contact.html#formulaire">Nous écrire</a></li></ul></div>
     </div>
+    <div class="foot-guides"><span>Guides 2026</span><a href="implantation-suisse-pme-francaises.html">Implantation en Suisse</a><a href="prospection-externalisee-suisse.html">Prospection externalisée</a><a href="marketing-externalise-suisse.html">Marketing externalisé</a></div>
     <div class="foot-bottom"><span>© 2026 Leadr GmbH</span><a href="mentions-legales.html">Mentions légales et confidentialité</a></div>
   </div>
 </footer>
@@ -255,7 +260,7 @@ def person(full=False):
     title = 'Luc Rohmer' if full else 'Un interlocuteur privilégié.'
     k = 'CEO' if full else 'Luc Rohmer, CEO de Leadr'
     return f'''<section class="sec person"><div class="wrap person-grid">
-  <div class="portrait"><img src="img/luc-rohmer.jpg" alt="Luc Rohmer, CEO de Leadr" onerror="this.remove()"><span class="ph" aria-hidden="true">LR</span></div>
+  <div class="portrait"><img src="img/luc-rohmer.jpg" alt="Luc Rohmer, CEO de Leadr" width="1100" height="1100" loading="lazy" decoding="async" onerror="this.remove()"><span class="ph" aria-hidden="true">LR</span></div>
   <div class="person-txt"><p class="kicker">{k}</p><h2>{title}</h2><p>{bio}</p>
   <div class="actions actions-soc"><a class="btn btn-red" href="contact.html">Prendre rendez-vous</a>{SOCIAL()}</div>{'' if full else '<p class="link-line person-more"><a href="leadr.html">Qui sommes-nous : le parcours de Luc Rohmer</a></p>'}</div>
 </div></section>'''
@@ -336,7 +341,7 @@ PAGES['vers-la-suisse.html'] = dict(
             ('Structurer au bon moment', 'Quand l\'activité le justifie : société suisse, banque, conformité, avec notre réseau de spécialistes.'),
         ]),
         cases('Exemples de missions', 'Deux questions fréquentes d\'entreprises françaises.', [CASES[0], CASES[2]], tone='sec-white'),
-        statement('Une filiale ne vend rien toute seule. Commencez par vos clients, la structure suivra.', who='Luc Rohmer, CEO de Leadr'),
+        statement('Commencez par générer des clients, la structure suivra.', who='Luc Rohmer, CEO de Leadr', cls='st-quote'),
         cta('Votre offre a-t-elle sa place en Suisse ?', 'Un premier rendez-vous permet de le vérifier, franchement.'),
     ])
 
@@ -750,7 +755,7 @@ def localize(doc, lg, slug):
     doc = doc.replace('og-image.png', f'og-image-{lg}.png')
     for g in FR_ONLY:
         doc = doc.replace(f'href="{g}"', f'href="../{g}" hreflang="fr"')
-    for a in ('href="css/', 'src="js/', 'src="logo', 'src="img/', 'href="favicon'):
+    for a in ('href="css/', 'src="js/', 'src="logo', 'src="img/', 'href="favicon', 'href="apple-touch', 'href="fonts/'):
         doc = doc.replace(a, a.replace('="', '="../'))
     return doc
 
@@ -859,7 +864,7 @@ def _article_html(a):
           "datePublished": a['pub'], "dateModified": a['mod'], "inLanguage": "fr",
           "author": {"@type": "Person", "name": "Luc Rohmer", "jobTitle": "CEO", "url": "https://www.leadr.ch/leadr.html"},
           "publisher": {"@type": "Organization", "name": "Leadr GmbH", "logo": {"@type": "ImageObject", "url": "https://www.leadr.ch/logo.png"}},
-          "mainEntityOfPage": "https://www.leadr.ch/" + a['slug']}
+          "mainEntityOfPage": "https://www.leadr.ch/" + a['slug'], "image": "https://www.leadr.ch/og-image.png"}
     head_ = f'''<section class="hero hero-small"><div class="wrap"><div class="hero-txt">
   <p class="kicker"><a href="reperes.html">Repères</a> · Guide 2026</p><h1>{a['h1']}</h1>
   <p class="art-meta">Par Luc Rohmer, CEO de Leadr · Mis à jour le {a['date_fr']}</p></div></div></section>'''
@@ -883,6 +888,189 @@ REDIRECTS['delegation-commerciale'] = 'prospection-externalisee-suisse.html'
 REDIRECTS['privacy-policy'] = 'mentions-legales.html'
 
 # ------------------------------------------------------------------ build
+
+_HY = re.compile(r"(?<![\w-])([A-Za-zÀ-ÿœŒ'’]+(?:-[A-Za-zÀ-ÿœŒ'’]+)+)(?![\w-])")
+def keep_hyphen_words(doc):
+    """Empêche les retours à la ligne au niveau des tirets (est-il, rendez-vous) dans les titres."""
+    def inner(m):
+        return m.group(1) + re.sub(r'>([^<]+)<', lambda t: '>' + _HY.sub(r'<span class="nw">\1</span>', t.group(1)) + '<', '>' + m.group(3) + '<')[1:-1] + m.group(4)
+    doc = re.sub(r'(<(h1|h2|h3|summary)\b[^>]*>)(.*?)(</\2>)', inner, doc, flags=re.S)
+    doc = re.sub(r'(<(p) class="st"[^>]*>)(.*?)(</\2>)', inner, doc, flags=re.S)
+    return doc
+
+# ------------------------------------------------------------------ v2.20 : audit SEO
+FAQ_IMPL = [
+    ('Quelle forme de société choisir en Suisse, SA ou Sàrl ?', 'La Sàrl demande un capital de 20 000 francs entièrement libéré, et le nom des associés est public. La SA demande 100 000 francs, dont au moins 50 000 libérés à la création, et garde son actionnariat confidentiel. Le bon choix dépend de vos associés, de votre image et de vos projets de financement.'),
+    ('Faut-il une personne domiciliée en Suisse pour créer une société ?', 'Oui. Une SA ou une Sàrl suisse doit être représentée par au moins une personne domiciliée en Suisse et disposant d\'un pouvoir de signature. Nous vous aidons à trouver la bonne configuration.'),
+    ('Dans quel canton s\'implanter ?', 'Dans celui qui sert le mieux votre activité : proximité des clients, bassin d\'emploi, langue de travail, fiscalité. L\'imposition des bénéfices varie fortement d\'un canton à l\'autre, mais ce n\'est qu\'un critère parmi d\'autres.'),
+    ('Combien de temps faut-il pour créer une société en Suisse ?', 'La constitution elle-même prend en général quelques semaines, entre le dépôt du capital, l\'acte notarié et l\'inscription au registre du commerce. Le plus long est souvent la préparation : choix du canton, de la structure et des personnes clés.'),
+    ('Comment créer une filiale en France ?', 'La SAS est la forme la plus courante pour une filiale : capital libre et statuts souples. L\'immatriculation se fait en ligne, via le guichet unique des formalités d\'entreprises. Le choix de la région, de la domiciliation et de la banque mérite autant d\'attention que la forme juridique.'),
+]
+FAQ_RELOC = [
+    ('Pourquoi relocaliser une activité en Suisse ?', 'Pour rapprocher un centre de décision de ses marchés, accéder à des talents, bénéficier d\'un cadre stable et d\'une fiscalité cantonale compétitive. La décision se prend sur un ensemble de critères, jamais sur la fiscalité seule.'),
+    ('Qui conçoit la structure, et qui l\'exécute ?', 'Les cabinets de conseil et les fiduciaires dessinent la structure, la fiscalité et la substance. Leadr intervient sur l\'exécution locale et humaine : choix du site, recrutement, relations avec les autorités et les réseaux, direction de transition si besoin.'),
+    ('Combien de temps dure une relocalisation ?', 'Selon l\'ampleur du projet, de quelques mois à plus d\'un an. Nous construisons le calendrier avec vous dès le premier rendez-vous, étape par étape.'),
+]
+FAQ_MDT = [
+    ('Combien de temps dure une mission de management de transition ?', 'Le temps nécessaire à votre situation : quelques mois pour assurer une continuité, davantage pour un démarrage ou une transformation. La durée est fixée au cadrage et peut évoluer.'),
+    ('Le dirigeant de transition devient-il salarié de notre entreprise ?', 'Non. Il intervient dans le cadre d\'une mission, sans contrat de travail avec votre entreprise. Leadr reste votre interlocuteur pour le suivi.'),
+    ('Pourquoi un profil suisse ?', 'Parce qu\'il connaît le pays de l\'intérieur : la langue de travail, les usages, le droit du travail local et les réseaux. Il est opérationnel tout de suite, sans période d\'adaptation.'),
+]
+FAQ_RDV = [
+    ('Le premier rendez-vous engage-t-il à quelque chose ?', 'Non. C\'est un échange sans engagement. Vous repartez avec un avis franc, et avec une proposition seulement si votre projet s\'y prête.'),
+    ('Comment préparer le premier rendez-vous ?', 'Quelques éléments suffisent : votre offre, le marché visé, vos premiers contacts éventuels et votre calendrier. Si vous réalisez déjà un chiffre d\'affaires sur ce marché, notez-le, c\'est un bon point de départ.'),
+    ('Le premier rendez-vous se fait-il à distance ?', 'Oui, le premier échange se fait par appel, à l\'horaire que vous choisissez dans l\'agenda en ligne. Les rendez-vous suivants peuvent avoir lieu sur place.'),
+]
+_insert_before_cta('implantation.html', [faq('Créer sa société : vos questions.', FAQ_IMPL), faq_ld(FAQ_IMPL)])
+_insert_before_cta('relocalisation.html', [faq('Relocalisation : vos questions.', FAQ_RELOC, tone='sec-white'), faq_ld(FAQ_RELOC)])
+_insert_before_cta('management-transition.html', [faq('Management de transition : vos questions.', FAQ_MDT), faq_ld(FAQ_MDT)])
+_insert_before_cta('premier-rendez-vous.html', [faq('Premier rendez-vous : vos questions.', FAQ_RDV, tone='sec-white'), faq_ld(FAQ_RDV)])
+
+BC_LABEL = dict(NAV + SERVICES)
+BC_LABEL.update({'leadr.html': 'Qui sommes-nous', 'cas-clients.html': 'Cas clients', 'reperes.html': 'Repères', 'contact.html': 'Contact',
+                 'mentions-legales.html': 'Mentions légales et confidentialité'})
+for _a in ARTICLES: BC_LABEL[_a['slug']] = _a['card']
+HOME = {'fr': 'Accueil', 'de': 'Startseite', 'en': 'Home'}
+
+def seo_ld(slug, lg):
+    pre = 'https://www.leadr.ch/' + ('' if lg == 'fr' else lg + '/')
+    out = []
+    if slug == 'index.html':
+        out.append({"@context": "https://schema.org", "@type": "WebSite", "name": "Leadr", "alternateName": "Leadr GmbH", "url": pre, "inLanguage": lg})
+    else:
+        tr = (lambda x: x) if lg == 'fr' else (lambda x: TR[lg].get(x, x))
+        items = [(HOME[lg], pre)]
+        if slug in FR_ONLY: items.append((tr('Repères'), pre + 'reperes.html'))
+        items.append((tr(BC_LABEL.get(slug, slug)), pre + slug))
+        el = []
+        for i, (n, u) in enumerate(items):
+            d = {"@type": "ListItem", "position": i + 1, "name": n}
+            if u: d["item"] = u
+            el.append(d)
+        out.append({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": el})
+    if slug == 'leadr.html':
+        out.append({"@context": "https://schema.org", "@type": "Person", "name": "Luc Rohmer", "jobTitle": "CEO",
+                    "worksFor": {"@type": "Organization", "name": "Leadr GmbH", "url": "https://www.leadr.ch/"},
+                    "image": "https://www.leadr.ch/img/luc-rohmer.jpg", "sameAs": [LINKEDIN]})
+    return ''.join('<script type="application/ld+json">' + json.dumps(o, ensure_ascii=False) + '</script>' for o in out)
+
+def finish(doc, slug, lg):
+    doc = doc.replace('</head>', seo_ld(slug, lg) + '\n</head>', 1)
+    return keep_hyphen_words(doc)
+
+def page_404():
+    body = [hero('Page introuvable', 'Cette page n\'existe pas, ou plus.',
+                 'Le site leadr.ch a été entièrement renouvelé. Voici les pages les plus consultées.',
+                 [('index.html', 'Retour à l\'accueil'), ('contact.html', 'Prendre rendez-vous')], small=True),
+            cols('Pour continuer', 'Par où voulez-vous commencer ?', [
+                ('Vers la Suisse', 'Vendre et s\'implanter en Suisse.', 'vers-la-suisse.html'),
+                ('Vers la France', 'Se développer en France.', 'vers-la-france.html'),
+                ('Nos guides', 'Implantation, prospection, marketing.', 'reperes.html')], tone='sec-white')]
+    doc = head('Page introuvable · Leadr', 'Cette page n\'existe pas.', '404.html') + header('') + '\n'.join(body) + FOOT
+    doc = doc.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex">')
+    doc = doc.replace('<!--LANG-->', '')
+    doc = re.sub(r'<a ([^>]*?)href="contact.html"([^>]*)>Prendre rendez-vous</a>', lambda m: f'<a {m.group(1)}href="{BOOK}" target="_blank" rel="noopener"{m.group(2)}>Prendre rendez-vous</a>', doc)
+    doc = re.sub(r'(href|src)="(?!https?:|mailto:|tel:|#|/)([^"]+)"', r'\1="/\2"', doc)
+    for a, b in ((' ?', ' ?'), (' :', ' :')):
+        doc = doc.replace(a, b)
+    return keep_hyphen_words(doc)
+
+VERCEL_HEADERS = [
+    {'source': '/(.*)', 'headers': [{'key': 'X-Content-Type-Options', 'value': 'nosniff'},
+                                     {'key': 'Referrer-Policy', 'value': 'strict-origin-when-cross-origin'},
+                                     {'key': 'X-Frame-Options', 'value': 'SAMEORIGIN'}]},
+    {'source': '/(css|js|fonts)/(.*)', 'headers': [{'key': 'Cache-Control', 'value': 'public, max-age=31536000, immutable'}]},
+    {'source': '/img/(.*)', 'headers': [{'key': 'Cache-Control', 'value': 'public, max-age=2592000'}]},
+]
+
+# ------------------------------------------------------------------ v2.21 : formats d'intervention
+FORMATS = [
+    dict(name='Diagnostic de marché', line='Savoir si votre offre a sa place, et par où commencer.', dur='4 à 6 semaines',
+         who='Vous envisagez un nouveau marché et voulez décider sur des faits, pas sur des impressions.',
+         gets=['Une analyse du marché et de la concurrence, prix compris',
+               'La liste des normes et des règles qui s\'appliquent à votre offre',
+               'Une cartographie des décideurs et des partenaires à approcher',
+               'Une recommandation écrite : y aller, attendre ou adapter, et comment',
+               'Une restitution de vive voix avec votre direction']),
+    dict(name='Mission ciblée', line='Une question précise, une réponse précise.', dur='Quelques semaines',
+         who='Vous avez un besoin ponctuel : vérifier une conformité, rencontrer les bons décideurs, trancher une question de structure.',
+         gets=['Une note de réponse claire, avec ses sources',
+               'Selon le besoin, une liste nominative de décideurs et une approche préparée pour chacun',
+               'Des recommandations directement applicables par vos équipes']),
+    dict(name='Antenne permanente', line='Votre présence commerciale sur le marché, mois après mois.', dur='Au mois, par paliers',
+         who='Vous voulez des rendez-vous et des clients sur le marché visé, sans recruter ni créer de structure.',
+         gets=['La préparation de votre offre : discours, supports en français et en allemand, prix en francs suisses',
+               'Des mises en relation préparées avec des décideurs ciblés',
+               'Une veille sur les règles, les appels d\'offres et les acteurs de votre secteur',
+               'Des réponses à vos questions dès qu\'elles se posent',
+               'Un point mensuel chiffré : contacts, rendez-vous, pistes en cours']),
+    dict(name='Implantation et direction locale', line='Quand l\'activité justifie une présence sur place.', dur='Sur mesure',
+         who='Vos ventes sont là et il faut une structure, un site ou une direction locale.',
+         gets=['Le choix de la structure, du canton ou de la région',
+               'La coordination des spécialistes : fiduciaire, notaire, banque, avocat',
+               'Le recrutement des profils clés, ou une direction de transition grâce à notre partenariat stratégique',
+               'Un calendrier partagé et un interlocuteur unique jusqu\'à l\'installation']),
+]
+
+def formats_cards(detail=True):
+    out = ''
+    for i, f in enumerate(FORMATS):
+        if detail:
+            lis = ''.join(f'<li>{g}</li>' for g in f['gets'])
+            out += f'''<article class="fmt"><p class="fmt-n">{i+1:02d}</p><h3>{f['name']}</h3><p class="fmt-line">{f['line']}</p>
+  <p class="fmt-dur"><span>Durée</span>{f['dur']}</p>
+  <p class="fmt-who"><span>Pour vous si</span>{f['who']}</p>
+  <p class="fmt-get-t">Ce que vous recevez</p><ul class="fmt-get">{lis}</ul></article>'''
+        else:
+            out += f'''<a class="fmt fmt-mini" href="formats.html"><p class="fmt-n">{i+1:02d}</p><h3>{f['name']}</h3><p class="fmt-line">{f['line']}</p><p class="fmt-dur"><span>Durée</span>{f['dur']}</p></a>'''
+    return out
+
+def formats_home():
+    return f'''<section class="sec sec-white" id="formats"><div class="wrap">
+  <p class="kicker">Formats d'intervention</p><h2 class="w-narrow">Quatre façons de travailler avec nous.</h2>
+  <p class="intro">Du diagnostic à l'implantation, chaque format a un périmètre, une durée et des livrables clairs. Vous savez ce que vous achetez avant de vous engager.</p>
+  <div class="fmts fmts-mini">{formats_cards(False)}</div>
+  <p class="link-line"><a href="formats.html">Voir le détail des formats</a></p>
+</div></section>'''
+
+FAQ_FMT = [
+    ('Combien coûte chaque format ?', 'Chaque intervention est dimensionnée selon votre projet, le marché visé et le nombre de régions concernées. Le diagnostic et la mission ciblée font l\'objet d\'un forfait annoncé avant le démarrage. L\'antenne permanente fonctionne au mois.'),
+    ('Faut-il commencer par un diagnostic ?', 'Non. Si votre question est précise, une mission ciblée suffit. Si votre offre est déjà adaptée au marché, l\'antenne permanente peut démarrer directement, avec un premier mois consacré à la préparation.'),
+    ('Ces formats valent-ils aussi pour la France et entre régions suisses ?', 'Oui. Les quatre formats s\'appliquent aux trois directions : de la France vers la Suisse, de la Suisse vers la France, et d\'une région linguistique suisse à l\'autre.'),
+    ('Qui réalise le travail ?', 'Votre interlocuteur privilégié pilote l\'intervention de bout en bout, avec l\'appui de l\'équipe Leadr et, selon les besoins, de spécialistes de notre réseau.'),
+]
+
+PAGES['formats.html'] = dict(
+    title='Formats d\'intervention : diagnostic, mission, antenne · Leadr',
+    desc='Diagnostic de marché, mission ciblée, antenne permanente, implantation : quatre formats clairs, avec leur durée et leurs livrables, pour la Suisse et la France.',
+    body=[
+        hero('Formats d\'intervention', 'Vous savez ce que vous achetez, avant de vous engager.',
+             'Quatre formats, chacun avec un périmètre, une durée et des livrables écrits. Ils s\'appliquent à la Suisse, à la France et aux deux régions linguistiques suisses.',
+             [('contact.html', 'Prendre rendez-vous'), ('#choisir', 'Quel format pour vous ?')]),
+        f'''<section class="sec sec-white"><div class="wrap"><div class="fmts">{formats_cards(True)}</div></div></section>''',
+        rows('Quel format pour vous ?', 'Partez de votre situation.', [
+            ('Vous vous demandez si le marché vaut l\'effort', 'Diagnostic de marché'),
+            ('Vous avez une question précise à régler', 'Mission ciblée'),
+            ('Vous voulez des rendez-vous qualifiés chaque mois', 'Antenne permanente'),
+            ('Vos ventes justifient une présence locale', 'Implantation et direction locale'),
+        ], intro='Les formats se combinent. Un diagnostic ou une mission ciblée peut ouvrir sur une antenne permanente, puis sur une implantation. Chaque étape se décide sur les résultats de la précédente, sans engagement bloqué sur l\'année.').replace('<section class="sec ', '<section id="choisir" class="sec ', 1),
+        cols('Dans tous les formats', 'Ce qui ne change jamais.', [
+            ('Un interlocuteur privilégié', 'La même personne suit votre dossier du premier échange jusqu\'au bout.'),
+            ('Des livrables écrits', 'Chaque étape se conclut par un document que vous pouvez partager en interne.'),
+            ('Des points réguliers', 'Vous savez à tout moment où en est le travail et ce qui vient ensuite.'),
+            ('La confidentialité', 'Vos projets restent confidentiels, avant, pendant et après.'),
+        ], tone='sec-white'),
+        faq('Formats d\'intervention : vos questions.', FAQ_FMT), faq_ld(FAQ_FMT),
+        cta('Quel format pour votre projet ?', 'Le premier rendez-vous sert aussi à choisir le bon point de départ.'),
+    ])
+
+SERVICES.insert(0, ('formats.html', 'Formats d\'intervention'))
+BC_LABEL['formats.html'] = 'Formats d\'intervention'
+_h = PAGES['index.html']['body']
+_i = next(k for k, x in enumerate(_h) if 'Quatre temps, un seul objectif' in x)
+PAGES['index.html']['body'] = _h[:_i + 1] + [formats_home()] + _h[_i + 1:]
+PAGES['methode.html']['body'].insert(-1, f'<section class="sec sec-white"><div class="wrap"><p class="kicker">Formats d\'intervention</p><h2 class="w-narrow">Une méthode, quatre formats.</h2><p class="intro">Diagnostic, mission ciblée, antenne permanente ou implantation : la méthode s\'applique à chacun, à la mesure de votre besoin.</p><div class="fmts fmts-mini">{formats_cards(False)}</div><p class="link-line"><a href="formats.html">Voir le détail des formats</a></p></div></section>')
+
 def build():
     if os.path.exists(OUT): shutil.rmtree(OUT)
     shutil.copytree('static', OUT)
@@ -897,18 +1085,19 @@ def build():
             d = localize(doc, 'fr', slug)
             d = re.sub(r'<link rel="alternate" hreflang="(de|en)"[^>]*>', '', d)
             d = d.replace(f'href="de/{slug}"', 'href="de/reperes.html"').replace(f'href="en/{slug}"', 'href="en/reperes.html"')
-            open(os.path.join(OUT, slug), 'w', encoding='utf-8').write(d)
+            open(os.path.join(OUT, slug), 'w', encoding='utf-8').write(finish(d, slug, 'fr'))
             continue
-        open(os.path.join(OUT, slug), 'w', encoding='utf-8').write(localize(doc, 'fr', slug))
+        open(os.path.join(OUT, slug), 'w', encoding='utf-8').write(finish(localize(doc, 'fr', slug), slug, 'fr'))
         for lg in ('de', 'en'):
             os.makedirs(os.path.join(OUT, lg), exist_ok=True)
-            open(os.path.join(OUT, lg, slug), 'w', encoding='utf-8').write(localize(doc, lg, slug))
+            open(os.path.join(OUT, lg, slug), 'w', encoding='utf-8').write(finish(localize(doc, lg, slug), slug, lg))
     json.dump({'redirects': [{'source': '/' + a, 'destination': '/' + b, 'permanent': True} for a, b in REDIRECTS.items()],
                'headers': [{'source': '/(.*)', 'has': [{'type': 'host', 'value': 'leadr-site.vercel.app'}],
-                            'headers': [{'key': 'X-Robots-Tag', 'value': 'noindex, nofollow'}]}]},
+                            'headers': [{'key': 'X-Robots-Tag', 'value': 'noindex, nofollow'}]}] + VERCEL_HEADERS},
               open(os.path.join(OUT, 'vercel.json'), 'w'), indent=2)
     urls = ''.join(f'<url><loc>https://www.leadr.ch/{p}{"" if s=="index.html" else s}</loc><lastmod>2026-10-02</lastmod></url>' for s in PAGES for p in (('',) if PAGES[s].get('fr_only') else ('', 'de/', 'en/')))
     open(os.path.join(OUT, 'sitemap.xml'), 'w').write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>')
+    open(os.path.join(OUT, '404.html'), 'w', encoding='utf-8').write(page_404())
     open(os.path.join(OUT, 'robots.txt'), 'w').write('User-agent: *\nAllow: /\nSitemap: https://www.leadr.ch/sitemap.xml\n')
     print('pages:', len(PAGES), 'x3 langues')
     for m in sorted(MISSING): print('NON TRADUIT', m)

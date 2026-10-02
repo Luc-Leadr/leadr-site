@@ -1,9 +1,11 @@
+@font-face{font-family:"Arimo"; font-style:normal; font-weight:400 700; font-display:swap; src:url(../fonts/arimo-latin-wght-normal.woff2) format("woff2"); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Arimo"; font-style:italic; font-weight:400 700; font-display:swap; src:url(../fonts/arimo-latin-wght-italic.woff2) format("woff2"); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 /* Leadr · leadr.ch v2 · feuille de style partagée */
 :root{
   --red:#E8192C; --red-dark:#C5101F;
   --ink:#1D1D1F; --paper:#FAF7F2; --white:#FFFFFF;
   --muted:#57534C; --rule:#D9D2C5; --rule-dark:#3A3A3D;
-  --font:Arial, Helvetica, sans-serif;
+  --font:"Arimo", Arial, Helvetica, sans-serif;
   --wrap:1200px; --gutter:24px;
   --s1:clamp(2.6rem, 5.6vw, 4.9rem);
   --s2:clamp(1.9rem, 3.4vw, 2.9rem);
@@ -368,7 +370,7 @@ legend{font-weight:700; font-size:1rem; margin-bottom:10px}
 .hp{position:absolute !important; left:-9999px; width:1px; height:1px; opacity:0}
 
 /* ===== v2.8 : optimisation smartphone et tablette ===== */
-h1, h2, h3, .st, .case-q, .qcard h3{overflow-wrap:break-word; hyphens:auto; -webkit-hyphens:auto}
+h1, h2, h3, .st, .case-q, .qcard h3{overflow-wrap:normal; hyphens:manual; -webkit-hyphens:manual}
 .brand{display:flex; align-items:center; min-height:44px}
 .foot-bottom a{display:inline-block; padding:10px 0}
 .chip span{display:inline-flex; align-items:center; min-height:44px; padding:10px 16px}
@@ -530,3 +532,57 @@ h1, h2, h3, .st, .case-q, .qcard h3{overflow-wrap:break-word; hyphens:auto; -web
 .article-body th{background:var(--paper); font-weight:700; color:var(--ink)}
 .article-body tr:last-child td{border-bottom:0}
 @media (max-width:600px){ .article-body{font-size:1rem} .article-body h2{margin-top:44px} }
+
+/* ---------- v2.18 : blocs rouges des pages intérieures, plus légers ---------- */
+.statement:not(.st-graph){padding:clamp(40px, 4.5vw, 60px) 0}
+.statement:not(.st-graph) .st{font-size:clamp(1.5rem, 2.6vw, 2.15rem); font-weight:600; line-height:1.22; letter-spacing:-0.015em; max-width:32ch}
+.statement:not(.st-graph) .st-sub{font-size:1.05rem; margin-top:14px}
+.st-quote .st{font-weight:500; font-style:italic}
+.st-quote .st::before{content:"«\00a0"} .st-quote .st::after{content:"\00a0»"}
+html[lang=de] .st-quote .st::before{content:"«"} html[lang=de] .st-quote .st::after{content:"»"}
+html[lang=en] .st-quote .st::before{content:"\201C"} html[lang=en] .st-quote .st::after{content:"\201D"}
+.st-quote .st-who{margin-top:14px; font-weight:600; font-size:.98rem; opacity:.92}
+@media (max-width:600px){ .statement:not(.st-graph) .st{font-size:1.4rem} .statement:not(.st-graph){padding:36px 0} }
+
+/* ---------- v2.19 : titres plus fins, sans coupure de mots ---------- */
+h1, h2, h3, .st, .case-q, .qcard h3, .further-t{text-wrap:balance}
+h1{font-weight:620; letter-spacing:-0.025em; line-height:1.04}
+h2{font-weight:600; letter-spacing:-0.018em; line-height:1.12}
+h3{font-weight:600; letter-spacing:-0.005em}
+.statement .st{font-weight:600; letter-spacing:-0.022em}
+.statement:not(.st-graph) .st{font-weight:600}
+.st-quote .st{font-weight:480}
+.case-q, .qcard h3{font-weight:600; letter-spacing:-0.012em}
+.site-footer h2{font-weight:700}
+.nw{white-space:nowrap}
+
+/* ---------- v2.20 : guides en pied de page, contraste ---------- */
+.foot-guides{display:flex; flex-wrap:wrap; gap:8px 22px; align-items:baseline; margin-top:40px; padding-top:22px; border-top:1px solid var(--rule-dark); font-size:.95rem}
+.foot-guides span{color:#fff; font-weight:700; margin-right:4px}
+.foot-guides a{text-decoration:none; display:inline-block; padding:10px 0}
+.foot-guides a:hover{color:#fff; text-decoration:underline}
+.foot-guides + .foot-bottom{margin-top:22px}
+.kicker, .case-sect, .qcard-sect{color:var(--red-dark)}
+.sec-dark .kicker, .cta .kicker, .statement .kicker, .site-footer .kicker{color:#FF4A58}
+
+/* ---------- v2.21 : formats d'intervention ---------- */
+.fmts{display:grid; grid-template-columns:repeat(2, 1fr); gap:24px; margin-top:8px}
+.fmts-mini{grid-template-columns:repeat(4, 1fr); margin-top:40px}
+.fmt{background:var(--paper); border:1px solid var(--rule); border-top:4px solid var(--red); padding:30px 30px 28px; display:flex; flex-direction:column}
+.sec:not(.sec-white) .fmt{background:#fff}
+.fmt-n{margin:0 0 14px; font-size:.9rem; font-weight:700; color:var(--red-dark); letter-spacing:.06em}
+.fmt h3{font-size:clamp(1.3rem, 1.9vw, 1.6rem); margin:0 0 8px}
+.fmt-line{margin:0 0 18px; color:var(--muted); font-size:1.05rem}
+.fmt-dur, .fmt-who{margin:0 0 12px; font-size:1rem; line-height:1.5}
+.fmt-dur span, .fmt-who span, .fmt-get-t{display:block; font-size:.82rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--ink); margin-bottom:4px}
+.fmt-get-t{margin:10px 0 8px}
+.fmt-get{margin:0; padding:0; list-style:none}
+.fmt-get li{position:relative; padding:0 0 0 26px; margin:0 0 9px; font-size:1rem; line-height:1.5; color:#3A3A3C}
+.fmt-get li::before{content:""; position:absolute; left:2px; top:.5em; width:12px; height:7px; border-left:2px solid var(--red); border-bottom:2px solid var(--red); transform:rotate(-45deg)}
+.fmt-mini{text-decoration:none; color:inherit; transition:transform .15s, box-shadow .15s}
+.fmt-mini:hover{transform:translateY(-3px); box-shadow:0 12px 28px rgba(29,29,31,.08)}
+.fmt-mini .fmt-line{font-size:1rem; margin-bottom:auto; padding-bottom:16px}
+.fmt-mini .fmt-dur{margin:0}
+#choisir .rows .row p{font-weight:700; color:var(--ink)}
+@media (max-width:1100px){ .fmts-mini{grid-template-columns:repeat(2, 1fr)} }
+@media (max-width:760px){ .fmts, .fmts-mini{grid-template-columns:1fr} .fmt{padding:24px 22px} }
