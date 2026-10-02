@@ -15,6 +15,13 @@ document.addEventListener('DOMContentLoaded', function () {
   if (t && n) t.addEventListener('click', function () {
     var o = n.classList.toggle('open'); t.setAttribute('aria-expanded', o ? 'true' : 'false');
   });
+  var dd = document.querySelector('.has-dd'), db = dd && dd.querySelector('.dd-btn');
+  if (dd && db) {
+    var close = function () { dd.classList.remove('open'); db.setAttribute('aria-expanded', 'false'); };
+    db.addEventListener('click', function (ev) { ev.stopPropagation(); var o = dd.classList.toggle('open'); db.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+    document.addEventListener('click', function (ev) { if (!dd.contains(ev.target)) close(); });
+    document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') { close(); db.blur(); } });
+  }
   var f = document.querySelector('.form');
   if (f) f.addEventListener('submit', function (ev) {
     ev.preventDefault();

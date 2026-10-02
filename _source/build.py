@@ -17,7 +17,11 @@ FORM_URL = 'https://formsubmit.co/ajax/' + EMAIL   # FormSubmit : envoi des mess
 LOGO, LOGO_W = 'logo.png', 'logo-blanc.png'     # Remplaçables par les vrais fichiers
 
 NAV = [('vers-la-suisse.html', 'Vers la Suisse'), ('vers-la-france.html', 'Vers la France'),
-       ('entre-regions-suisses.html', 'Entre régions suisses'), ('methode.html', 'Méthode'), ('leadr.html', 'À propos')]
+       ('entre-regions-suisses.html', 'Entre régions suisses')]
+SERVICES = [('methode.html', 'Notre méthode'), ('premier-rendez-vous.html', 'Premier rendez-vous'),
+            ('implantation.html', 'Implantation'), ('relocalisation.html', 'Relocalisation'),
+            ('management-transition.html', 'Management de transition')]
+CHEV = '<svg class="chev" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 
 e = lambda s: s  # textes déjà maîtrisés (HTML autorisé dans les contenus)
 
@@ -58,6 +62,12 @@ def head(title, desc, slug):
 def header(slug):
     cur = ' aria-current="page"'
     links = ''.join(f'<li><a href="{h}"{cur if h==slug else ""}>{l}</a></li>' for h, l in NAV)
+    in_srv = any(h == slug for h, _ in SERVICES)
+    sub = ''.join(f'<li><a href="{h}"{cur if h==slug else ""}>{l}</a></li>' for h, l in SERVICES)
+    links += (f'<li class="has-dd{" is-cur" if in_srv else ""}"><button class="dd-btn" type="button" aria-expanded="false" aria-controls="dd-services">Services{CHEV}</button>'
+              f'<ul class="dd" id="dd-services">{sub}</ul></li>')
+    links += f'<li><a href="contact.html"{cur if slug=="contact.html" else ""}>Contact</a></li>'
+    links += f'<li class="nav-extra"><a href="leadr.html"{cur if slug=="leadr.html" else ""}>Qui sommes-nous</a></li>'
     return f'''<header class="site-header">
   <div class="wrap header-in">
     <a class="brand" href="index.html" aria-label="Leadr, accueil"><img src="{LOGO}" alt="Leadr" width="146" height="30"></a>
@@ -245,7 +255,7 @@ def person(full=False):
     return f'''<section class="sec person"><div class="wrap person-grid">
   <div class="portrait"><img src="img/luc-rohmer.jpg" alt="Luc Rohmer, CEO de Leadr" onerror="this.remove()"><span class="ph" aria-hidden="true">LR</span></div>
   <div class="person-txt"><p class="kicker">{k}</p><h2>{title}</h2><p>{bio}</p>
-  <div class="actions actions-soc"><a class="btn btn-red" href="contact.html">Prendre rendez-vous</a>{SOCIAL()}</div></div>
+  <div class="actions actions-soc"><a class="btn btn-red" href="contact.html">Prendre rendez-vous</a>{SOCIAL()}</div>{'' if full else '<p class="link-line person-more"><a href="leadr.html">Qui sommes-nous : le parcours de Luc Rohmer</a></p>'}</div>
 </div></section>'''
 
 def cta(title, txt=''):

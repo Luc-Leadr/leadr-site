@@ -421,7 +421,7 @@ h1, h2, h3, .st, .case-q, .qcard h3{overflow-wrap:break-word; hyphens:auto; -web
 }
 
 /* menu compact (burger) jusqu'à 1180 px : tablettes en paysage et allemand plus long */
-@media (max-width:1180px){
+@media (max-width:1199px){
   .nav-toggle{display:block}
   .nav{position:fixed; inset:76px 0 auto 0; background:var(--paper); flex-direction:column; align-items:stretch; gap:0; padding:8px var(--gutter) 24px; border-bottom:1px solid var(--rule); transform:translateY(-130%); transition:transform .25s; z-index:-1; box-shadow:0 12px 24px rgba(29,29,31,.08)}
   .nav.open{transform:none}
@@ -437,7 +437,7 @@ h1, h2, h3, .st, .case-q, .qcard h3{overflow-wrap:break-word; hyphens:auto; -web
   .nav-toggle[aria-expanded=true] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .site-header{backdrop-filter:none; background:var(--paper)}
 }
-@media (min-width:901px) and (max-width:1180px){
+@media (min-width:901px) and (max-width:1199px){
   .nav{left:auto; width:380px; border-left:1px solid var(--rule)}
 }
 .consent input{flex:none}
@@ -460,27 +460,53 @@ h1, h2, h3, .st, .case-q, .qcard h3{overflow-wrap:break-word; hyphens:auto; -web
 @media (max-width:600px){ .statement .st{font-size:1.75rem} .statement{padding:40px 0} }
 .actions-soc .soc{width:52px; height:52px}
 
-/* ---------- v2.12 : motifs de fond discrets ---------- */
+/* ---------- v2.14 : photos de fond (Cervin, Oberland bernois) ---------- */
 .sec-alps, .st-graph, .cta{position:relative; overflow:hidden; isolation:isolate}
 .sec-alps{padding-bottom:clamp(120px, 12vw, 190px)}
-.sec-alps::before{content:""; position:absolute; left:0; right:0; bottom:0; height:clamp(320px, 31vw, 470px);
-  background:url(../img/alpes.jpg) 18% 100%/cover no-repeat; opacity:.85; pointer-events:none; z-index:-1;
-  -webkit-mask-image:linear-gradient(to top, #000 62%, transparent); mask-image:linear-gradient(to top, #000 62%, transparent)}
-.st-graph::before{content:""; position:absolute; bottom:0; right:max(var(--gutter), calc((100% - var(--wrap)) / 2 + var(--gutter)));
-  width:min(46%, 620px); height:88%; background:url(../img/structure.svg) right bottom/contain no-repeat; opacity:.17; pointer-events:none; z-index:-1}
-.cta::before{content:""; position:absolute; left:0; right:0; bottom:0; height:clamp(90px, 11vw, 170px);
-  background:url(../img/horizon.svg) 68% 100%/cover no-repeat; opacity:.07; pointer-events:none; z-index:-1}
+.sec-alps::before, .st-graph::before, .cta::before{content:""; position:absolute; left:0; right:0; bottom:0; pointer-events:none; z-index:-1; background-repeat:no-repeat}
+.sec-alps::before{height:clamp(320px, 31vw, 480px); background-image:url(../img/antenne.jpg); background-size:cover; background-position:27% 100%; opacity:.85}
+.st-graph::before{top:0; background-image:url(../img/rouge.jpg); background-size:cover; background-position:100% 100%}
+.cta::before{top:0; background-image:url(../img/cta.jpg); background-size:cover; background-position:50% 100%; opacity:.62}
 @media (max-width:900px){
-  .st-graph::before{width:72%; height:70%; opacity:.11; right:0}
-  .sec-alps{padding-bottom:170px}
-  .sec-alps::before{height:340px; background-position:16% 100%; opacity:.85}
+  .sec-alps{padding-bottom:190px}
+  .sec-alps::before{height:340px}
+  .st-graph::before{background-position:78% 100%; opacity:.75}
 }
 @media (max-width:600px){
-  .st-graph::before{width:92%; height:58%; opacity:.09}
   .sec-alps{padding-bottom:170px}
-  .sec-alps::before{height:300px; background-position:14% 100%}
-  .cta::before{height:80px}
+  .sec-alps::before{height:300px; background-position:26% 100%}
+  .cta::before{background-position:40% 100%; opacity:.55}
 }
 .sec.sec-dark .aside{background:#2A2A2D; color:var(--paper)}
 .sec-dark .text-body p, .sec-dark .split-body p{color:#CFCAC0}
 .sec-dark .aside strong{color:#fff}
+
+/* ---------- v2.15 : menu Services déroulant, Contact ---------- */
+.has-dd{position:relative}
+.nav > ul{align-items:center}
+@media (min-width:1200px){ .nav{gap:22px} .nav > ul{gap:20px} .nav > ul > li > a{display:inline-block} html[lang=de] .nav > ul > li > a, html[lang=de] .dd-btn{font-size:.92rem} }
+.nav > ul > li > a, .dd-btn{white-space:nowrap; line-height:1.5}
+.dd-btn{font:inherit; font-size:.98rem; font-weight:700; color:inherit; background:none; border:0; border-bottom:2px solid transparent; padding:6px 0; cursor:pointer; display:inline-flex; align-items:center; gap:6px}
+.dd-btn:hover{border-color:var(--ink)}
+.has-dd.is-cur > .dd-btn{border-color:var(--red)}
+.chev{transition:transform .2s}
+.nav .dd{position:absolute; top:calc(100% + 12px); left:-20px; min-width:270px; display:flex; flex-direction:column; gap:0; background:#fff; border:1px solid var(--rule); border-top:3px solid var(--red); box-shadow:0 18px 36px rgba(29,29,31,.14); padding:8px 0; opacity:0; visibility:hidden; transform:translateY(-6px); transition:opacity .18s, transform .18s, visibility .18s; z-index:60}
+.nav .dd::before{content:""; position:absolute; left:0; right:0; top:-16px; height:16px}
+.nav .dd a{display:block; padding:11px 20px; border:0; font-size:.95rem; font-weight:600; white-space:nowrap}
+.nav .dd a:hover, .nav .dd a:focus-visible{background:var(--paper); color:var(--red)}
+.nav .dd a[aria-current]{color:var(--red)}
+.has-dd:hover > .dd, .has-dd:focus-within > .dd, .has-dd.open > .dd{opacity:1; visibility:visible; transform:none}
+.has-dd:hover .chev, .has-dd.open .chev{transform:rotate(180deg)}
+.nav-extra{display:none}
+.person-more{margin-top:18px}
+@media (max-width:1199px){
+  .nav{max-height:calc(100vh - 76px); overflow-y:auto}
+  .nav-extra{display:block}
+  .dd-btn{display:flex; width:100%; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--rule); font-size:1.1rem; cursor:default; pointer-events:none}
+  .has-dd.is-cur > .dd-btn{color:var(--red); border-bottom-color:var(--rule)}
+  .dd-btn .chev{display:none}
+  .nav .dd{position:static; opacity:1; visibility:visible; transform:none; min-width:0; background:none; border:0; box-shadow:none; padding:4px 0 8px 16px; border-left:2px solid var(--rule); margin:8px 0 6px}
+  .nav .dd::before{display:none}
+  .nav .dd a{padding:10px 0; font-size:1rem; border-bottom:0; white-space:normal}
+  .nav .dd a:hover{background:none}
+}
