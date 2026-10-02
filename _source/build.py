@@ -296,7 +296,7 @@ PAGES['index.html'] = dict(
         statement('Les revenus d\'abord, la structure ensuite.',
                   'Beaucoup d\'entreprises commencent par créer une filiale, louer des bureaux et recruter, puis cherchent leurs clients. Nous faisons l\'inverse : valider le marché et générer une activité réelle avant d\'engager des coûts fixes.', cls='st-graph'),
         steps('Méthode Leadr', 'Quatre temps, un seul objectif : une activité réelle.', [
-            ('Cadrer', 'Votre offre, vos ambitions, vos contraintes. Et une question franche : votre offre est-elle exportable ?'),
+            ('Cadrer', 'Votre offre, vos ambitions, vos contraintes, avec une question franche : votre offre est-elle exportable ?'),
             ('Valider', 'Les normes à respecter et l\'avis de vrais acheteurs, avant tout investissement lourd.'),
             ('Construire', 'La feuille de route commerciale, région par région, et la structure si elle devient nécessaire.'),
             ('Activer', 'Mises en relation, rendez-vous, premiers clients. Sur le terrain.'),
@@ -423,7 +423,7 @@ PAGES['leadr.html'] = dict(
         ], intro='Pourquoi Leadr ? Parce que les bonnes entreprises échouent souvent de l\'autre côté de la frontière pour de mauvaises raisons : une norme ignorée, un mauvais interlocuteur, un usage mal compris. Leadr existe pour leur éviter ces erreurs.', tone='sec-white'),
         text('Notre rôle', 'Votre équipe sur place, sans avoir à la recruter.', [
             'Pour nos clients, Leadr est un interlocuteur permanent sur le marché visé. Une question sur une norme, un texte, un interlocuteur à identifier : vous nous la posez, nous revenons avec une réponse précise.',
-            'Et quand il faut rencontrer les bonnes personnes, notre réseau fait la différence.'], tone='sec-white'),
+            'Quand il faut rencontrer les bonnes personnes, notre réseau fait la différence.'], tone='sec-white'),
         text('Notre réseau', 'Les bons spécialistes, au bon moment.', [
             'Fiduciaires et notaires, banques, avocats, spécialistes des ressources humaines et du recrutement, chambres de commerce et agences de promotion économique.',
             'Pour le management de transition, Leadr s\'appuie en outre sur un partenariat stratégique avec un cabinet spécialisé, implanté en Suisse.',

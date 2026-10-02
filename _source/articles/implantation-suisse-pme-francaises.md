@@ -5,7 +5,7 @@ Une PME française qui veut vendre ou s'implanter en Suisse n'a pas besoin, dans
 ## Sommaire
 
 1. Pourquoi l'implantation en Suisse est différente de toute autre expansion internationale
-2. Les erreurs les plus fréquentes des PME françaises
+2. Ce que nous observons sur le terrain
 3. Les modalités d'implantation possibles (tableau comparatif)
 4. Les 6 critères pour choisir le bon partenaire d'implantation
 5. Étude de cas : accompagnement d'une PME lyonnaise vers l'arc lémanique
@@ -18,23 +18,25 @@ La Suisse n'est pas un marché unique : c'est une fédération de 26 cantons, av
 
 Le contexte économique reste par ailleurs très favorable aux entreprises françaises : la France est le 4e fournisseur de la Suisse et dégage un excédent commercial bilatéral de 2,3 milliards d'euros (2024), le 2e excédent français en Europe. Plus de 1'300 filiales françaises sont déjà implantées en Suisse. La demande est réelle : la difficulté est presque toujours méthodologique, pas commerciale.
 
-## 2. Les erreurs les plus fréquentes des PME françaises
+## 2. Ce que nous observons sur le terrain
 
-**À éviter absolument :**
+Les PME françaises qui échouent en Suisse ont rarement un mauvais produit. Elles bloquent presque toujours sur l'une de ces quatre situations, que nous retrouvons d'un dossier à l'autre.
 
-- Arriver « en terrain conquis », en traitant la Suisse comme une région française ou une extension naturelle du marché européen.
-- Se présenter comme la simple antenne d'un groupe français sans ancrage local.
-- Négliger la barrière linguistique et culturelle entre Suisse romande et Suisse alémanique : près des deux tiers du marché est germanophone.
-- Exiger une décision rapide : les cycles de décision suisses sont longs, construits sur le consensus, et une pression commerciale trop appuyée est perçue négativement.
-- Survendre ou utiliser un discours commercial trop démonstratif : la culture d'affaires suisse valorise la sobriété, la preuve factuelle et les références concrètes plutôt que la promesse.
-- Sous-estimer la complexité fiscale à trois niveaux (fédéral, cantonal, communal) et copier telles quelles des pratiques fiscales françaises.
+**Une offre qui ne respecte pas encore les règles locales.** La Suisse reprend une grande partie des normes européennes, mais des prescriptions fédérales et cantonales s'y ajoutent. Une entreprise qui découvre l'écart devant son premier acheteur perd la face et le temps de corriger. La vérification des textes applicables se fait avant la première prise de contact, pas après.
 
-**À privilégier :**
+**Trop de contacts, pas assez de décideurs.** Une campagne de centaines d'appels donne peu de résultats en Suisse, où les acheteurs travaillent avec des personnes connues ou recommandées. Cinq interlocuteurs bien choisis, approchés un par un avec une recommandation, valent mieux qu'un fichier entier.
 
-- Construire la confiance dans la durée, tenir scrupuleusement ses engagements et délais.
-- S'appuyer sur des relais locaux reconnus plutôt que sur du démarchage direct.
-- Adapter la documentation commerciale par région linguistique (a minima français et allemand, prix en CHF).
-- Mettre en avant des références déjà éprouvées plutôt que des promesses.
+**Une structure créée trop tôt.** Une filiale, des bureaux et un premier salarié coûtent cher avant même la première commande. Tant que les ventes ne sont pas là, les 90 jours de prestation autorisés par an et un relais commercial local suffisent souvent.
+
+**Un discours pensé pour la France.** Arriver avec l'assurance d'un acteur déjà installé, presser l'acheteur de décider ou multiplier les superlatifs produit l'effet inverse de celui recherché. Les décideurs suisses attendent de la sobriété, des faits et des engagements tenus. Ils prennent le temps du consensus, puis restent fidèles.
+
+**Ce qui fonctionne, à l'inverse :**
+
+- Choisir une région linguistique et quelques cantons, plutôt que viser « la Suisse » d'un seul coup.
+- Préparer des supports en français et en allemand, avec des prix en francs suisses.
+- Montrer des références concrètes, même modestes, plutôt que des promesses.
+- S'appuyer sur des relais locaux reconnus pour obtenir les premiers rendez-vous.
+- Tenir chaque engagement et chaque délai, dès le premier échange.
 
 ## 3. Les modalités d'implantation possibles
 
@@ -45,10 +47,10 @@ Le contexte économique reste par ailleurs très favorable aux entreprises fran�
 | Portage salarial | Relation tripartite : le consultant est salarié d'une société de portage suisse qui gère les assurances sociales | Pour un indépendant ou un cadre qui veut sécuriser son statut le temps de tester le marché |
 | Représentation fiscale | Obligatoire dès que le chiffre d'affaires global dépasse CHF 100'000 par an avec activité non exonérée en Suisse | Dès que l'activité en Suisse devient significative, avant même toute filiale |
 | Société anonyme (SA) | Capital minimum CHF 100'000 (dont 20 %, soit au moins CHF 50'000, libérés à la création), actionnaires non publics | Structure plus lourde, utile pour la confidentialité actionnariale et une image d'envergure |
-| Société à responsabilité limitée (Sàrl) | Capital minimum CHF 20'000, entièrement libéré ; associés publics au registre du commerce | Structure la plus courante pour une PME qui s'implante, coût d'entrée plus faible |
-| Croissance externe | Rachat d'une PME suisse existante : environ 20 % des 618'000 PME suisses envisagent une transmission dans les 5 ans | Pour accélérer l'accès au marché et au réseau local sans partir de zéro |
+| Société à responsabilité limitée (Sàrl) | Capital minimum CHF 20'000, entièrement libéré, avec des associés inscrits publiquement au registre du commerce | Structure la plus courante pour une PME qui s'implante, coût d'entrée plus faible |
+| Croissance externe | Rachat d'une PME suisse existante, alors que de nombreux dirigeants de PME suisses préparent leur succession | Pour accélérer l'accès au marché et au réseau local sans partir de zéro |
 
-La fiscalité des sociétés varie fortement selon le canton choisi : le taux effectif combiné (fédéral, cantonal et communal) va d'environ 11,9 % (Zoug) à plus de 20 % (Zurich, Berne). C'est un critère de localisation à part entière, pas un simple détail administratif.
+La fiscalité des sociétés varie fortement selon le canton choisi : le taux effectif combiné (fédéral, cantonal et communal) va d'environ 12 % dans les cantons les plus attractifs à plus de 20 % dans d'autres. C'est un critère de localisation à part entière, pas un simple détail administratif.
 
 ## 4. Les 6 critères pour choisir le bon partenaire d'implantation
 
@@ -74,7 +76,7 @@ Cette approche progressive, valider avant d'investir, est précisément ce qui d
 
 ## 6. Qui publie ce guide
 
-Ce guide est publié par **Leadr**, société suisse dirigée par **Luc Rohmer**, spécialisée dans l'accompagnement des PME françaises qui cherchent à s'implanter et à commercialiser en Suisse : diagnostic de marché, prospection externalisée, marketing externalisé, mise en relation avec l'écosystème franco-suisse (CCI France Suisse, réseaux professionnels romands et alémaniques) et pilotage de l'activation commerciale par paliers. Leadr accompagne aussi bien des PME en phase de test que des dirigeants engagés dans une démarche de croissance externe ou de reprise en Suisse.
+Ce guide est publié par **Leadr**, société suisse dirigée par **Luc Rohmer**, spécialisée dans l'accompagnement des PME françaises qui cherchent à s'implanter et à commercialiser en Suisse : diagnostic de marché, prospection externalisée, marketing externalisé, mise en relation avec les acteurs économiques des deux pays (CCI France Suisse, réseaux professionnels romands et alémaniques) et pilotage de l'activation commerciale par paliers. Leadr accompagne aussi bien des PME en phase de test que des dirigeants engagés dans une démarche de croissance externe ou de reprise en Suisse.
 
 ## 7. Questions fréquentes
 
@@ -98,4 +100,4 @@ Il n'y a pas de délai standard : une approche par paliers (diagnostic, prépara
 
 Parce que les zones linguistiques (romande, alémanique, italophone) ont des cultures d'affaires, des priorités économiques et parfois des pratiques commerciales différentes. La Suisse alémanique concentre à elle seule 65 % du territoire et la majorité du PIB : elle ne peut pas être ignorée, même pour une stratégie d'entrée par la Romandie.
 
-*Sources : guide « Affaires en Suisse 2026-2027 » (CCI France Suisse, Business France, CCEF) ; dossier d'accompagnement Leadr, cas client anonymisé (2026).*
+*Sources des chiffres : Office fédéral de la statistique (population et langues), SECO (filiales), Douanes françaises et Banque de France (échanges commerciaux), Code des obligations suisse (formes de sociétés), Administration fédérale des contributions (TVA). Étude de cas : dossier d'accompagnement Leadr, anonymisé (2026).*
