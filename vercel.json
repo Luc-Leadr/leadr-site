@@ -1,0 +1,39 @@
+{
+  "redirects": [
+    {
+      "source": "/developpement-commercial.html",
+      "destination": "/methode.html",
+      "permanent": true
+    },
+    {
+      "source": "/validation-marche.html",
+      "destination": "/methode.html",
+      "permanent": true
+    },
+    {
+      "source": "/offre-pme-pmi.html",
+      "destination": "/implantation.html",
+      "permanent": true
+    },
+    {
+      "source": "/offre-eti-grands-comptes.html",
+      "destination": "/implantation.html",
+      "permanent": true
+    },
+    {
+      "source": "/partenaires.html",
+      "destination": "/leadr.html",
+      "permanent": true
+    },
+    {
+      "source": "/session-cadrage.html",
+      "destination": "/premier-rendez-vous.html",
+      "permanent": true
+    },
+    {
+      "source": "/ressources.html",
+      "destination": "/reperes.html",
+      "permanent": true
+    }
+  ]
+}

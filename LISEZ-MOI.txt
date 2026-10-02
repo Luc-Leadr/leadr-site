@@ -1,0 +1,8 @@
+Site leadr.ch, version 2.6 (1er octobre 2026), en français, allemand (/de/) et anglais (/en/)
+
+Mise en ligne : déposer TOUT le contenu de ce dossier (fichiers et dossiers css, js, img, _source) à la racine du dépôt GitHub "leadr-site". Sur GitHub, pour un dossier, ouvrir d'abord le dossier puis y déposer ses fichiers. Vercel redéploie automatiquement.
+
+Formulaire de contact : relié à FormSubmit. Au tout premier message envoyé depuis le site en ligne, FormSubmit envoie un email d'activation à lrohmer@leadr.ch : cliquer sur « Activate Form ». Ensuite, chaque message arrive directement par email.
+
+vercel.json redirige automatiquement les anciennes adresses vers les nouvelles pages.
+Le dossier _source contient le générateur du site (build.py, traductions i18n, carte, images de partage). Il reste sur GitHub mais n'est pas publié en ligne (.vercelignore).
