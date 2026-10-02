@@ -510,3 +510,23 @@ h1, h2, h3, .st, .case-q, .qcard h3{overflow-wrap:break-word; hyphens:auto; -web
   .nav .dd a{padding:10px 0; font-size:1rem; border-bottom:0; white-space:normal}
   .nav .dd a:hover{background:none}
 }
+
+/* ---------- v2.16 : guides ---------- */
+.art-meta{color:var(--muted); font-size:.95rem; margin-top:18px}
+.hero .kicker a{color:inherit; text-decoration:none; border-bottom:1px solid currentColor}
+.article-body{max-width:760px; margin:0 auto; font-size:1.06rem; line-height:1.72}
+.article-body h2{font-size:clamp(1.45rem, 2.6vw, 1.9rem); line-height:1.2; margin:56px 0 18px; letter-spacing:-0.01em}
+.article-body h2:first-child{margin-top:0}
+.article-body h3{font-size:1.15rem; margin:32px 0 10px}
+.article-body p, .article-body li{color:#3A3A3C}
+.article-body ul, .article-body ol{padding-left:1.3em}
+.article-body li{margin:8px 0}
+.article-body strong{color:var(--ink)}
+.article-body > p:first-of-type{font-size:1.12rem}
+.article-body em{color:var(--muted); font-size:.95rem}
+.table-scroll{overflow-x:auto; margin:24px 0; border:1px solid var(--rule); -webkit-overflow-scrolling:touch}
+.article-body table{border-collapse:collapse; width:100%; min-width:640px; font-size:.93rem; line-height:1.5}
+.article-body th, .article-body td{padding:12px 14px; border-bottom:1px solid var(--rule); text-align:left; vertical-align:top}
+.article-body th{background:var(--paper); font-weight:700; color:var(--ink)}
+.article-body tr:last-child td{border-bottom:0}
+@media (max-width:600px){ .article-body{font-size:1rem} .article-body h2{margin-top:44px} }

@@ -27,8 +27,10 @@ e = lambda s: s  # textes déjà maîtrisés (HTML autorisé dans les contenus)
 
 # ------------------------------------------------------------------ gabarit
 ORG_LD = json.dumps({"@context": "https://schema.org", "@type": "Organization", "name": "Leadr GmbH", "url": "https://www.leadr.ch/",
-  "logo": "https://www.leadr.ch/logo.png", "email": EMAIL, "address": {"@type": "PostalAddress", "addressLocality": "Bâle", "addressCountry": "CH"},
-  "employee": {"@type": "Person", "name": "Luc Rohmer", "jobTitle": "CEO"}, "areaServed": ["CH", "FR"],
+  "logo": "https://www.leadr.ch/logo.png", "email": EMAIL, "telephone": "+41 76 650 42 64",
+  "address": {"@type": "PostalAddress", "streetAddress": "Sternengasse 6", "postalCode": "4051", "addressLocality": "Bâle", "addressCountry": "CH"},
+  "employee": {"@type": "Person", "name": "Luc Rohmer", "jobTitle": "CEO", "sameAs": [LINKEDIN]}, "areaServed": ["CH", "FR"],
+  "knowsAbout": ["Prospection commerciale externalisée", "Implantation en Suisse", "Développement commercial en France", "Management de transition", "Relocalisation d'entreprise"],
   "description": "Société suisse, antenne des entreprises françaises et suisses sur leur nouveau marché : renseignement, adaptation de l'offre, mise en relation ciblée."}, ensure_ascii=False)
 
 def head(title, desc, slug):
@@ -89,7 +91,7 @@ FOOT = f'''</main>
       <div class="foot-brand">
         <img src="{LOGO_W}" alt="Leadr" width="146" height="30">
         <p>Votre antenne entre la France et la Suisse, et d'une région suisse à l'autre.</p>
-        <p class="foot-addr">Leadr GmbH, Bâle, Suisse<br><a href="mailto:{EMAIL}">{EMAIL}</a></p>{SOCIAL("social-foot")}
+        <p class="foot-addr">Leadr GmbH, Sternengasse 6, 4051 Bâle, Suisse<br><a href="tel:+41766504264">+41 76 650 42 64</a><br><a href="mailto:{EMAIL}">{EMAIL}</a></p>{SOCIAL("social-foot")}
       </div>
       <div><h2>Directions</h2><ul>
         <li><a href="vers-la-suisse.html">Vers la Suisse</a></li><li><a href="vers-la-france.html">Vers la France</a></li><li><a href="entre-regions-suisses.html">Entre régions suisses</a></li></ul></div>
@@ -677,7 +679,10 @@ def cta2(title, txt):
     return f"""<section class="cta"><div class="wrap cta-in"><div><h2>{title}</h2><p>{txt}</p></div>
   <div class="cta-act"><a class="btn btn-red btn-lg" href="contact.html">Prendre rendez-vous</a><p class="micro">Appel de prise de contact, sans engagement. Vous choisissez votre créneau.</p></div></div></section>"""
 
-FAQ_HOME2 = FAQ_HOME[:3] + [('Mon activité est-elle exportable ?', 'Une offre qui repose sur un produit, une technologie ou un savoir-faire technique voyage bien. Une activité encadrée par une réglementation nationale demande d\'abord une étude, et parfois un autre chemin. Nous vous le disons dès le premier rendez-vous.')] + FAQ_HOME[3:]
+FAQ_HOME2 = FAQ_HOME[:1] + [
+    ('Faites-vous de la prospection commerciale externalisée ?', 'Oui, sous une forme ciblée. Nous agissons comme votre équipe commerciale externalisée sur le marché visé : analyse du marché, identification des décideurs, approche directe et préparation de chaque rendez-vous. Pas de démarchage de masse ni d\'appels à froid en série.'),
+    ('Comment se passe l\'accompagnement au quotidien ?', 'Un interlocuteur privilégié suit votre dossier de bout en bout. Il vous renseigne sur les règles et les usages, prépare les mises en relation et fait régulièrement le point avec vous. L\'accompagnement dure aussi longtemps que votre projet en a besoin.'),
+] + FAQ_HOME[1:3] + [('Mon activité est-elle exportable ?', 'Une offre qui repose sur un produit, une technologie ou un savoir-faire technique voyage bien. Une activité encadrée par une réglementation nationale demande d\'abord une étude, et parfois un autre chemin. Nous vous le disons dès le premier rendez-vous.')] + FAQ_HOME[3:]
 FAQ_LD = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
     {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ_HOME2]}, ensure_ascii=False)
 
@@ -743,9 +748,139 @@ def localize(doc, lg, slug):
     doc = doc.replace(f'href="https://www.leadr.ch/{pub}"', f'href="https://www.leadr.ch/{lg}/{pub}"').replace(f'content="https://www.leadr.ch/{pub}"', f'content="https://www.leadr.ch/{lg}/{pub}"')
     doc = doc.replace(f'hreflang="x-default" href="https://www.leadr.ch/{lg}/{pub}"', f'hreflang="x-default" href="https://www.leadr.ch/{pub}"').replace(f'hreflang="fr" href="https://www.leadr.ch/{lg}/{pub}"', f'hreflang="fr" href="https://www.leadr.ch/{pub}"')
     doc = doc.replace('og-image.png', f'og-image-{lg}.png')
+    for g in FR_ONLY:
+        doc = doc.replace(f'href="{g}"', f'href="../{g}" hreflang="fr"')
     for a in ('href="css/', 'src="js/', 'src="logo', 'src="img/', 'href="favicon'):
         doc = doc.replace(a, a.replace('="', '="../'))
     return doc
+
+# ------------------------------------------------------------------ v2.16 : référencement, FAQ, guides
+import markdown as _md
+
+TITLES = {
+    'index.html': ('Prospection et implantation en Suisse et en France · Leadr',
+                   'Leadr, société suisse basée à Bâle, accompagne les PME, PMI et ETI en Suisse et en France : prospection ciblée, mise en relation, implantation.'),
+    'vers-la-suisse.html': ('Entreprise française : vendre et s\'implanter en Suisse · Leadr',
+                            'Prospection, mise en relation, normes suisses et implantation : Leadr accompagne les PME, PMI et ETI françaises sur le marché suisse.'),
+    'vers-la-france.html': ('Entreprise suisse : se développer en France · Leadr',
+                            'Prospection ciblée, réseaux régionaux et mise en relation avec les bons décideurs : Leadr accompagne les entreprises suisses en France.'),
+    'entre-regions-suisses.html': ('Vendre en Suisse alémanique ou en Suisse romande · Leadr',
+                                   'Franchir le Röstigraben : prospection, codes d\'affaires et mise en relation pour les entreprises suisses qui visent l\'autre région linguistique.'),
+    'methode.html': ('Notre méthode d\'accompagnement en quatre temps · Leadr',
+                     'Cadrer, valider, construire, activer : la méthode Leadr pour ouvrir un nouveau marché en Suisse ou en France, du diagnostic aux premiers clients.'),
+    'leadr.html': ('Qui sommes-nous · Leadr GmbH, Bâle',
+                   'Leadr GmbH, société suisse basée à Bâle et dirigée par Luc Rohmer : prospection, accompagnement et mise en relation entre la France et la Suisse.'),
+    'premier-rendez-vous.html': ('Premier rendez-vous : un avis franc sur votre projet · Leadr',
+                                 'Un premier rendez-vous pour comprendre votre projet en Suisse ou en France et vous donner un avis franc sur son potentiel.'),
+    'implantation.html': ('Créer sa société en Suisse ou en France · Leadr',
+                          'Créer une société en Suisse ou en France au bon moment : choix de la structure, constitution, banque, conformité, avec un seul interlocuteur.'),
+    'relocalisation.html': ('Relocalisation d\'activité en Suisse · Leadr',
+                            'Transférer un siège, un centre de décision ou une activité en Suisse : accompagnement de la décision jusqu\'à l\'installation des équipes.'),
+    'cas-clients.html': ('Cas clients : prospection et implantation en Suisse · Leadr',
+                         'Des missions réelles entre la France et la Suisse, présentées de façon anonyme : normes, prospection ciblée, création de société.'),
+    'reperes.html': ('Repères et guides pour s\'implanter en Suisse · Leadr',
+                     'Guides 2026 pour les PME françaises : implantation en Suisse, prospection externalisée, marketing externalisé, et les repères clés du marché suisse.'),
+    'contact.html': ('Contact et prise de rendez-vous · Leadr',
+                     'Réservez un appel de prise de contact avec Luc Rohmer, CEO de Leadr, ou présentez votre projet par écrit.'),
+}
+for _s, (_t, _d) in TITLES.items():
+    PAGES[_s]['title'], PAGES[_s]['desc'] = _t, _d
+
+def faq_ld(items):
+    return '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in items]}, ensure_ascii=False) + '</script>'
+
+FAQ_CH = [
+    ('Comment une entreprise française peut-elle prospecter en Suisse ?', 'En ciblant d\'abord une région linguistique et quelques cantons, puis en approchant directement les décideurs identifiés, idéalement avec une recommandation. Le démarchage de masse fonctionne mal en Suisse : les acheteurs choisissent lentement, sur la base de la confiance et de références concrètes. Notre prospection est donc ciblée : quelques interlocuteurs justes, approchés un par un.'),
+    ('Faut-il créer une société en Suisse pour y vendre ?', 'Pas au début. Une entreprise française peut vendre ses produits depuis la France et fournir des prestations en Suisse jusqu\'à 90 jours par an, après une annonce préalable. Au-delà de 100 000 francs de chiffre d\'affaires mondial avec une activité imposable en Suisse, l\'inscription à la TVA suisse s\'impose, avec un représentant fiscal. La société suisse se justifie quand l\'activité est installée.'),
+    ('Par quelle région de Suisse commencer ?', 'Cela dépend de votre secteur et de vos clients cibles. La Suisse romande est plus accessible pour une entreprise française, mais la Suisse alémanique pèse la majorité de l\'économie du pays. Nous recommandons souvent un premier marché test, puis une extension réfléchie de l\'autre côté du Röstigraben.'),
+    ('Mes produits doivent-ils être adaptés aux normes suisses ?', 'Souvent, oui. La Suisse reprend une grande partie des normes européennes, mais des prescriptions fédérales ou cantonales s\'ajoutent dans certains domaines, comme la construction ou la sécurité. Nous recherchons les textes applicables à la source avant que vous ne commenciez à vendre.'),
+    ('Combien de temps faut-il pour obtenir des résultats en Suisse ?', 'Les premiers rendez-vous qualifiés arrivent dès la phase d\'activation, mais une présence commerciale durable se construit généralement sur 18 à 24 mois. Les acheteurs suisses prennent le temps de décider, et restent fidèles ensuite.'),
+]
+FAQ_FR = [
+    ('Comment une entreprise suisse peut-elle prospecter en France ?', 'En ciblant des régions précises plutôt que « la France » dans son ensemble. Le pays est centralisé dans ses textes mais très régional dans ses réseaux : chaque bassin économique a ses décideurs, ses salons et ses relais. Nous identifions les interlocuteurs qui comptent et vous présentons directement.'),
+    ('Faut-il créer une société en France ?', 'Pas forcément au départ. Selon votre activité, vous pouvez vendre depuis la Suisse, travailler avec un agent commercial ou ouvrir un bureau de liaison. Les obligations de TVA et de représentation fiscale sont à vérifier selon votre cas. La filiale française se justifie quand l\'activité est installée.'),
+    ('Par quelle région de France commencer ?', 'Par celle où vos clients cibles sont concentrés, pas forcément la plus proche. Chaque filière a ses pôles : l\'industrie, la santé, l\'énergie ou l\'agroalimentaire n\'ont pas la même géographie. Le premier rendez-vous sert aussi à faire ce choix.'),
+    ('Quelles différences entre la France et la Suisse dans les affaires ?', 'En France, les décisions remontent souvent plus haut dans la hiérarchie et la relation personnelle pèse beaucoup. Les rendez-vous s\'obtiennent plus facilement avec une recommandation, et les négociations sont souvent plus directes qu\'en Suisse.'),
+]
+FAQ_RG = [
+    ('Qu\'est-ce que le Röstigraben, et pourquoi compte-t-il en affaires ?', 'C\'est la frontière culturelle entre la Suisse romande et la Suisse alémanique. Au-delà de la langue, les habitudes d\'achat, la façon de décider et les réseaux professionnels diffèrent. Une offre qui fonctionne à Lausanne doit souvent être repensée pour Zurich ou Bâle.'),
+    ('Est-il possible de prospecter en Suisse alémanique en français ?', 'Pour quelques contacts, parfois. Pour développer une vraie activité, non : les décideurs alémaniques attendent des échanges en allemand et des supports pensés pour leurs codes, pas une simple traduction. Nous préparons l\'approche et vous mettons en relation avec les bons interlocuteurs.'),
+    ('Comment une entreprise alémanique peut-elle se développer en Suisse romande ?', 'En adaptant son discours au marché romand, plus proche de la culture française dans le ton et la relation, et en s\'appuyant sur des relais locaux. Nous identifions les décideurs et les réseaux romands qui comptent pour votre secteur.'),
+    ('Faut-il une adresse dans l\'autre région linguistique ?', 'Pas au début. Une présence se construit d\'abord par les clients. Une adresse ou une équipe locale se justifie ensuite, quand l\'activité le demande.'),
+]
+
+def _insert_before_cta(slug, blocks):
+    b = PAGES[slug]['body']
+    i = max(k for k, x in enumerate(b) if 'class="cta"' in x)
+    PAGES[slug]['body'] = b[:i] + blocks + b[i:]
+
+# ---- guides (articles en français uniquement)
+ARTICLES = [
+    dict(slug='implantation-suisse-pme-francaises.html', md='implantation-suisse-pme-francaises.md',
+         title='Implantation en Suisse pour PME françaises : guide 2026 · Leadr',
+         h1='Implantation en Suisse pour PME françaises : comment choisir le bon partenaire',
+         desc='Implantation en Suisse pour PME françaises en 2026 : modalités, coûts, erreurs à éviter et critères pour choisir le bon partenaire. Guide par Leadr.',
+         short='Modalités, structures juridiques, erreurs à éviter et critères pour choisir le bon partenaire.',
+         card='Implantation en Suisse', pub='2026-09-09', mod='2026-10-02', date_fr='2 octobre 2026'),
+    dict(slug='prospection-externalisee-suisse.html', md='prospection-externalisee-suisse.md',
+         title='Prospection externalisée en Suisse : guide 2026 · Leadr',
+         h1='Prospection externalisée en Suisse : comment choisir le bon prestataire',
+         desc='Prospection commerciale externalisée pour vendre en Suisse depuis la France en 2026 : quand la choisir, combien elle coûte, comment choisir le bon prestataire.',
+         short='Quand la choisir, combien elle coûte, et comment choisir le bon prestataire.',
+         card='Prospection externalisée', pub='2026-09-10', mod='2026-10-02', date_fr='2 octobre 2026'),
+    dict(slug='marketing-externalise-suisse.html', md='marketing-externalise-suisse.md',
+         title='Marketing externalisé pour la Suisse : guide 2026 · Leadr',
+         h1='Marketing externalisé : comment adapter sa marque au marché suisse',
+         desc='Marketing externalisé pour se développer en Suisse en 2026 : comment adapter sa marque, son site et son discours au marché suisse. Guide par Leadr.',
+         short='Adapter sa marque, son site et son discours au marché suisse, sans simple traduction.',
+         card='Marketing externalisé', pub='2026-10-01', mod='2026-10-02', date_fr='2 octobre 2026'),
+]
+FR_ONLY = {a['slug'] for a in ARTICLES}
+
+def guides_block(k='Guides 2026', title='Nos guides pour aller plus loin.', exclude=None, tone='sec-white', intro=''):
+    items = [(a['card'], a['short'], a['slug'], 'Lire le guide') for a in ARTICLES if a['slug'] != exclude]
+    return cols(k, title, items, intro=intro, tone=tone)
+
+def _article_html(a):
+    src = open(os.path.join('articles', a['md']), encoding='utf-8').read()
+    # FAQ (section 7) pour le balisage
+    faq_part = src.split('## 7.', 1)[1]
+    qa = re.findall(r'^### (.+?)\n\n(.+?)(?=\n\n### |\n\n\*Sources|\Z)', faq_part, flags=re.S | re.M)
+    body = _md.markdown(src, extensions=['tables', 'sane_lists', 'toc'])
+    ids = re.findall(r'<h2 id="([^"]+)">\d+\.', body)
+    m = re.search(r'(<h2 id="[^"]*">Sommaire</h2>\s*<ol>)(.*?)(</ol>)', body, flags=re.S)
+    if m and ids:
+        lis = re.findall(r'<li>(.*?)</li>', m.group(2), flags=re.S)
+        new = ''.join(f'<li><a href="#{ids[i]}">{t}</a></li>' if i < len(ids) else f'<li>{t}</li>' for i, t in enumerate(lis))
+        body = body[:m.start(2)] + new + body[m.end(2):]
+    body = body.replace('<table>', '<div class="table-scroll"><table>').replace('</table>', '</table></div>')
+    ld = {"@context": "https://schema.org", "@type": "Article", "headline": a['h1'], "description": a['desc'],
+          "datePublished": a['pub'], "dateModified": a['mod'], "inLanguage": "fr",
+          "author": {"@type": "Person", "name": "Luc Rohmer", "jobTitle": "CEO", "url": "https://www.leadr.ch/leadr.html"},
+          "publisher": {"@type": "Organization", "name": "Leadr GmbH", "logo": {"@type": "ImageObject", "url": "https://www.leadr.ch/logo.png"}},
+          "mainEntityOfPage": "https://www.leadr.ch/" + a['slug']}
+    head_ = f'''<section class="hero hero-small"><div class="wrap"><div class="hero-txt">
+  <p class="kicker"><a href="reperes.html">Repères</a> · Guide 2026</p><h1>{a['h1']}</h1>
+  <p class="art-meta">Par Luc Rohmer, CEO de Leadr · Mis à jour le {a['date_fr']}</p></div></div></section>'''
+    art = f'<section class="sec sec-white"><div class="wrap"><article class="article-body">{body}</article></div></section>'
+    return [head_, art, guides_block('À lire aussi', 'Les autres guides.', exclude=a['slug'], tone=''),
+            '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>',
+            faq_ld([(q.strip(), re.sub(r'\s+', ' ', r.strip())) for q, r in qa]),
+            cta('Votre projet mérite un avis franc ?', 'Un premier rendez-vous pour voir comment ce guide s\'applique à votre situation.')]
+
+for _a in ARTICLES:
+    PAGES[_a['slug']] = dict(title=_a['title'], desc=_a['desc'], body=_article_html(_a), fr_only=True)
+
+_insert_before_cta('vers-la-suisse.html', [faq('Vendre et s\'implanter en Suisse : vos questions.', FAQ_CH), faq_ld(FAQ_CH),
+                                           guides_block(intro='Pour approfondir, nos guides détaillés (en français).')])
+_insert_before_cta('vers-la-france.html', [faq('Se développer en France : vos questions.', FAQ_FR, tone='sec-white'), faq_ld(FAQ_FR)])
+_insert_before_cta('entre-regions-suisses.html', [faq('Franchir le Röstigraben : vos questions.', FAQ_RG, tone='sec-white'), faq_ld(FAQ_RG)])
+_insert_before_cta('reperes.html', [guides_block(intro='Des guides complets, mis à jour régulièrement, pour préparer votre arrivée sur le marché suisse (en français).')])
+_insert_before_cta('implantation.html', [guides_block(intro='Pour approfondir, nos guides détaillés (en français).')])
+
+REDIRECTS['delegation-commerciale'] = 'prospection-externalisee-suisse.html'
+REDIRECTS['privacy-policy'] = 'mentions-legales.html'
 
 # ------------------------------------------------------------------ build
 def build():
@@ -758,13 +893,21 @@ def build():
         body = re.sub(r'<a ([^>]*?)href="contact.html"([^>]*)>(Prendre rendez-vous|Choisir un créneau)</a>', lambda m: f'<a {m.group(1)}href="{BOOK}" target="_blank" rel="noopener"{m.group(2)}>{m.group(3)}</a>', body)
         doc = head(p['title'], p['desc'].replace('"', '&quot;'), slug) + header(slug) + body + FOOT
         doc = re.sub(r'<a ([^>]*?)href="contact.html"([^>]*)>Prendre rendez-vous</a>', lambda m: f'<a {m.group(1)}href="{BOOK}" target="_blank" rel="noopener"{m.group(2)}>Prendre rendez-vous</a>', doc)
+        if p.get('fr_only'):
+            d = localize(doc, 'fr', slug)
+            d = re.sub(r'<link rel="alternate" hreflang="(de|en)"[^>]*>', '', d)
+            d = d.replace(f'href="de/{slug}"', 'href="de/reperes.html"').replace(f'href="en/{slug}"', 'href="en/reperes.html"')
+            open(os.path.join(OUT, slug), 'w', encoding='utf-8').write(d)
+            continue
         open(os.path.join(OUT, slug), 'w', encoding='utf-8').write(localize(doc, 'fr', slug))
         for lg in ('de', 'en'):
             os.makedirs(os.path.join(OUT, lg), exist_ok=True)
             open(os.path.join(OUT, lg, slug), 'w', encoding='utf-8').write(localize(doc, lg, slug))
-    json.dump({'redirects': [{'source': '/' + a, 'destination': '/' + b, 'permanent': True} for a, b in REDIRECTS.items()]},
+    json.dump({'redirects': [{'source': '/' + a, 'destination': '/' + b, 'permanent': True} for a, b in REDIRECTS.items()],
+               'headers': [{'source': '/(.*)', 'has': [{'type': 'host', 'value': 'leadr-site.vercel.app'}],
+                            'headers': [{'key': 'X-Robots-Tag', 'value': 'noindex, nofollow'}]}]},
               open(os.path.join(OUT, 'vercel.json'), 'w'), indent=2)
-    urls = ''.join(f'<url><loc>https://www.leadr.ch/{p}{"" if s=="index.html" else s}</loc></url>' for s in PAGES for p in ('', 'de/', 'en/'))
+    urls = ''.join(f'<url><loc>https://www.leadr.ch/{p}{"" if s=="index.html" else s}</loc><lastmod>2026-10-02</lastmod></url>' for s in PAGES for p in (('',) if PAGES[s].get('fr_only') else ('', 'de/', 'en/')))
     open(os.path.join(OUT, 'sitemap.xml'), 'w').write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>')
     open(os.path.join(OUT, 'robots.txt'), 'w').write('User-agent: *\nAllow: /\nSitemap: https://www.leadr.ch/sitemap.xml\n')
     print('pages:', len(PAGES), 'x3 langues')

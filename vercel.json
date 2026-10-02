@@ -34,6 +34,33 @@
       "source": "/ressources.html",
       "destination": "/reperes.html",
       "permanent": true
+    },
+    {
+      "source": "/delegation-commerciale",
+      "destination": "/prospection-externalisee-suisse.html",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/mentions-legales.html",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "leadr-site.vercel.app"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ]
 }
