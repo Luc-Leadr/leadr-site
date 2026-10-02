@@ -24,7 +24,7 @@ e = lambda s: s  # textes déjà maîtrisés (HTML autorisé dans les contenus)
 # ------------------------------------------------------------------ gabarit
 ORG_LD = json.dumps({"@context": "https://schema.org", "@type": "Organization", "name": "Leadr GmbH", "url": "https://www.leadr.ch/",
   "logo": "https://www.leadr.ch/logo.png", "email": EMAIL, "address": {"@type": "PostalAddress", "addressLocality": "Bâle", "addressCountry": "CH"},
-  "founder": {"@type": "Person", "name": "Luc Rohmer"}, "areaServed": ["CH", "FR"],
+  "employee": {"@type": "Person", "name": "Luc Rohmer", "jobTitle": "CEO"}, "areaServed": ["CH", "FR"],
   "description": "Société suisse, antenne des entreprises françaises et suisses sur leur nouveau marché : renseignement, adaptation de l'offre, mise en relation ciblée."}, ensure_ascii=False)
 
 def head(title, desc, slug):
@@ -149,10 +149,10 @@ def steps(k, title, items, intro='', tone=''):
   {kicker(k)}<h2 class="w-narrow">{title}</h2>{intro_h}<ol class="steps">{lis}</ol>
 </div></section>'''
 
-def statement(text, sub='', who=''):
+def statement(text, sub='', who='', cls=''):
     s = f'<p class="st-sub">{sub}</p>' if sub else ''
     w = f'<p class="st-who">{who}</p>' if who else ''
-    return f'''<section class="sec statement"><div class="wrap"><p class="st">{text}</p>{s}{w}</div></section>'''
+    return f'''<section class="sec statement{' ' + cls if cls else ''}"><div class="wrap"><p class="st">{text}</p>{s}{w}</div></section>'''
 
 def cols(k, title, items, intro='', tone=''):
     cs = ''
@@ -237,13 +237,13 @@ def faq(title, items, tone=''):
 </div></section>'''
 
 def person(full=False):
-    bio = ('Luc Rohmer a fondé Leadr après des années passées à construire des marques et des audiences. Il en a gardé une certitude : sur un nouveau marché, la première chose à gagner, c\'est la confiance. Il travaille aujourd\'hui avec des dirigeants d\'entreprises industrielles et technologiques, des deux côtés de la frontière, et s\'appuie sur un réseau de spécialistes suisses et français qu\'il mobilise selon les besoins de chaque projet.'
+    bio = ('Luc Rohmer est CEO de Leadr. Chef d\'entreprise lui-même, il connaît de l\'intérieur les décisions qu\'un dirigeant prend chaque jour : où investir, qui recruter, à qui faire confiance. C\'est ce qui lui permet de parler d\'égal à égal avec ses interlocuteurs, des deux côtés de la frontière, et de mettre en relation des dirigeants qui ont de vraies raisons de se rencontrer.'
            if full else
            'Chez Leadr, votre projet est suivi par la même personne, du premier échange jusqu\'à vos premiers clients. Elle connaît votre dossier, vos contraintes et vos interlocuteurs, et reste joignable dès qu\'une question se pose.')
     title = 'Luc Rohmer' if full else 'Un interlocuteur privilégié.'
-    k = 'Fondateur' if full else 'Luc Rohmer, fondateur de Leadr'
+    k = 'CEO' if full else 'Luc Rohmer, CEO de Leadr'
     return f'''<section class="sec person"><div class="wrap person-grid">
-  <div class="portrait"><img src="img/luc-rohmer.jpg" alt="Luc Rohmer, fondateur de Leadr" onerror="this.remove()"><span class="ph" aria-hidden="true">LR</span></div>
+  <div class="portrait"><img src="img/luc-rohmer.jpg" alt="Luc Rohmer, CEO de Leadr" onerror="this.remove()"><span class="ph" aria-hidden="true">LR</span></div>
   <div class="person-txt"><p class="kicker">{k}</p><h2>{title}</h2><p>{bio}</p>
   <div class="actions actions-soc"><a class="btn btn-red" href="contact.html">Prendre rendez-vous</a>{SOCIAL()}</div></div>
 </div></section>'''
@@ -257,7 +257,7 @@ FAQ_HOME = [
     ('Combien de temps faut-il pour s\'installer sur un nouveau marché ?', 'En général 18 à 24 mois pour une présence durable. Nous ne promettons pas d\'aller plus vite : nous faisons en sorte que chaque mois serve à quelque chose.'),
     ('Faut-il créer une société pour commencer ?', 'Rarement. Notre principe est simple : les revenus d\'abord, la structure ensuite. La société locale se crée quand l\'activité la justifie, pas avant.'),
     ('La mise en relation, c\'est du démarchage téléphonique ?', 'Non. Nous analysons le marché et les entreprises cibles pour identifier les quelques interlocuteurs qui comptent vraiment, puis nous les approchons directement grâce à notre réseau. Chaque contact est préparé.'),
-    ('Avec quelles entreprises travaillez-vous ?', 'Principalement des ETI et des PME industrielles et technologiques, bien installées sur leur marché d\'origine. Le critère décisif est l\'exportabilité de votre offre, que nous vérifions dès le premier rendez-vous.'),
+    ('Avec quelles entreprises travaillez-vous ?', 'Principalement des PME, des PMI et des ETI bien installées sur leur marché d\'origine, dans l\'industrie, les technologies et les services aux entreprises. Le critère décisif est l\'exportabilité de votre offre, que nous vérifions dès le premier rendez-vous.'),
     ('Combien coûte une mission ?', 'Chaque mission est dimensionnée selon votre projet, la direction visée et le niveau de présence dont vous avez besoin. Le premier rendez-vous permet d\'en définir le périmètre avant toute proposition.'),
     ('Comment se passe le premier rendez-vous ?', 'Nous parlons de votre offre, du marché visé, de vos ressources et de votre calendrier. Vous repartez avec un avis franc sur le potentiel de votre projet et les prochaines étapes possibles.'),
 ]
@@ -278,11 +278,11 @@ PAGES['index.html'] = dict(
             ('Mettre en relation', 'Identifier, par l\'analyse du marché et des entreprises, les quelques interlocuteurs qui comptent vraiment, puis vous les présenter directement grâce à notre réseau.'),
             ('Installer quand il le faut', 'Société, banque, conformité, coordonnées avec un réseau de spécialistes locaux.'),
         ], intro='Nous ne passons pas une fois pour livrer un rapport. Nous devenons votre équipe externalisée sur le marché visé : vous nous posez vos questions, nous allons chercher les réponses, et nous restons présents aussi longtemps que votre projet en a besoin.',
-           tone='sec-dark', note='Quelques contacts justes valent mieux que des centaines d\'appels. Nous ne faisons pas de démarchage de masse : chaque mise en relation est préparée.'),
+           tone='sec-dark sec-alps', note='Quelques contacts justes valent mieux que des centaines d\'appels. Nous ne faisons pas de démarchage de masse : chaque mise en relation est préparée.'),
         cases('Exemples de missions', 'Les questions que nos clients nous posent.', CASES,
               intro='Trois situations types, tirées de projets réels. Les noms et les chiffres restent confidentiels.'),
         statement('Les revenus d\'abord, la structure ensuite.',
-                  'Beaucoup d\'entreprises commencent par créer une filiale, louer des bureaux et recruter, puis cherchent leurs clients. Nous faisons l\'inverse : valider le marché et générer une activité réelle avant d\'engager des coûts fixes.'),
+                  'Beaucoup d\'entreprises commencent par créer une filiale, louer des bureaux et recruter, puis cherchent leurs clients. Nous faisons l\'inverse : valider le marché et générer une activité réelle avant d\'engager des coûts fixes.', cls='st-graph'),
         steps('Méthode Leadr', 'Quatre temps, un seul objectif : une activité réelle.', [
             ('Cadrer', 'Votre offre, vos ambitions, vos contraintes. Et une question franche : votre offre est-elle exportable ?'),
             ('Valider', 'Les normes à respecter et l\'avis de vrais acheteurs, avant tout investissement lourd.'),
@@ -290,7 +290,7 @@ PAGES['index.html'] = dict(
             ('Activer', 'Mises en relation, rendez-vous, premiers clients. Sur le terrain.'),
         ]) .replace('</ol>', '</ol><p class="link-line"><a href="methode.html">Voir la méthode en détail</a></p>'),
         text('Pour qui', 'Des entreprises qui ont déjà fait leurs preuves chez elles.', [
-            'Nous travaillons avec des dirigeants d\'ETI et de PME industrielles et technologiques, solidement installées sur leur marché d\'origine, qui veulent ouvrir un nouveau marché avec méthode plutôt qu\'au hasard des contacts.'],
+            'Nous travaillons avec des dirigeants de PME, de PMI et d\'ETI solidement installées sur leur marché d\'origine, dans l\'industrie, les technologies et les services aux entreprises, qui veulent ouvrir un nouveau marché avec méthode plutôt qu\'au hasard des contacts.'],
             tone='sec-white', aside='<strong>Notre premier critère : l\'exportabilité.</strong> Une offre qui repose sur un produit, une technologie ou un savoir-faire technique voyage bien. Une activité encadrée par une réglementation nationale demande d\'abord une étude, et parfois un autre chemin. Nous vous le disons dès le premier rendez-vous.'),
         person(),
         cols('Quand il faut aller plus loin', 'Implanter, relocaliser, diriger sur place.', [
@@ -324,7 +324,7 @@ PAGES['vers-la-suisse.html'] = dict(
             ('Structurer au bon moment', 'Quand l\'activité le justifie : société suisse, banque, conformité, avec notre réseau de spécialistes.'),
         ]),
         cases('Exemples de missions', 'Deux questions fréquentes d\'entreprises françaises.', [CASES[0], CASES[2]], tone='sec-white'),
-        statement('Une filiale ne vend rien toute seule. Commencez par vos clients, la structure suivra.', who='Luc Rohmer, fondateur de Leadr'),
+        statement('Une filiale ne vend rien toute seule. Commencez par vos clients, la structure suivra.', who='Luc Rohmer, CEO de Leadr'),
         cta('Votre offre a-t-elle sa place en Suisse ?', 'Un premier rendez-vous permet de le vérifier, franchement.'),
     ])
 
@@ -404,6 +404,7 @@ PAGES['leadr.html'] = dict(
              'Leadr GmbH est basée à Bâle. Nous aidons les entreprises françaises et suisses à se développer sur un nouveau marché, avec une conviction : une présence commerciale se construit par les résultats, pas par les promesses.'),
         person(full=True),
         rows('Parcours', 'Une expérience forgée entre la France et la Suisse.', [
+            ('Chef d\'entreprise et connecteur de dirigeants', 'Plusieurs entreprises dirigées en France et en Suisse, dans différents secteurs d\'activité. Diriger ses propres sociétés donne une lecture de dirigeant à dirigeant : les mêmes arbitrages, les mêmes contraintes, le même temps compté. Au fil des années, Luc est devenu pour son entourage professionnel celui qui sait qui présenter à qui. C\'est aujourd\'hui le cœur du métier de Leadr.'),
             ('CCI France Suisse, business center de Bâle', 'Un an au sein de la CCI France Suisse pour la mise en place et l\'ouverture de son business center à Bâle : un lieu où les entreprises françaises qui s\'implantent en Suisse peuvent se domicilier, travailler et rencontrer le réseau économique lors d\'événements. Une expérience qui a permis de tisser un réseau dans toute la Suisse.'),
             ('EuroAirport Bâle-Mulhouse, sales manager', 'Deux ans pour redynamiser l\'activité commerciale de l\'aéroport binational : trouver des clients en Suisse, en France et en Allemagne, et remplir salles, espaces et conférences avec des événements institutionnels comme privés.'),
             ('Création de contenu et marketing', 'Des années à construire des marques et des audiences, qui ont forgé une conviction : sur un nouveau marché, la première chose à gagner, c\'est la confiance.'),
@@ -413,6 +414,7 @@ PAGES['leadr.html'] = dict(
             'Et quand il faut rencontrer les bonnes personnes, notre réseau fait la différence.'], tone='sec-white'),
         text('Notre réseau', 'Les bons spécialistes, au bon moment.', [
             'Fiduciaires et notaires, banques, avocats, spécialistes des ressources humaines et du recrutement, chambres de commerce et agences de promotion économique.',
+            'Pour le management de transition, Leadr s\'appuie en outre sur un partenariat stratégique avec un cabinet spécialisé, implanté en Suisse.',
             'Nous ne les nommons pas ici : nous vous les présentons quand votre projet en a besoin.']),
         cols('Nos engagements', 'Trois choses sur lesquelles nous ne transigeons pas.', [
             ('La franchise', 'Si votre projet n\'a pas sa place sur le marché visé, nous vous le disons dès le premier rendez-vous.'),
@@ -470,7 +472,7 @@ PAGES['relocalisation.html'] = dict(
         rows('Ce que couvre une relocalisation', 'Du choix du site à l\'ancrage local.', [
             ('Le choix du site', 'Canton, ville, bassin d\'emploi, en fonction de votre activité.'),
             ('Les équipes locales', 'Recrutement des profils clés et organisation de l\'entité.'),
-            ('La direction de transition', 'Un dirigeant sur place pendant la phase de mise en route.'),
+            ('La direction de transition', 'Un dirigeant expérimenté sur place pendant la mise en route, grâce à notre partenariat stratégique en management de transition.'),
             ('L\'ancrage local', 'Relations avec les autorités, les réseaux économiques et les premiers partenaires.'),
         ]),
         cta('Un projet de relocalisation à l\'étude ?', 'Parlons-en en toute confidentialité.'),
@@ -478,17 +480,35 @@ PAGES['relocalisation.html'] = dict(
 
 PAGES['management-transition.html'] = dict(
     title='Management de transition en Suisse · Leadr',
-    desc='Une direction locale expérimentée pendant votre implantation en Suisse, le temps de recruter l\'équipe définitive.',
+    desc='Des dirigeants de transition expérimentés en Suisse, grâce à un partenariat stratégique : démarrage, continuité, transformation.',
     body=[
-        hero('Direction locale temporaire', 'Une direction sur place, le temps de construire l\'équipe.',
-             'Pendant une implantation ou une relocalisation en Suisse, un dirigeant de transition expérimenté pilote l\'activité locale jusqu\'au recrutement définitif. Un profil suisse, qui connaît le pays de l\'intérieur.',
+        hero('Management de transition', 'Des dirigeants aguerris, opérationnels dès le premier jour.',
+             'Implantation, relocalisation, départ imprévu ou transformation : un dirigeant de transition prend les commandes de votre activité en Suisse, le temps nécessaire. Un profil suisse, une expérience démontrée, un interlocuteur privilégié.',
              [('contact.html', 'Prendre rendez-vous')]),
-        cols('Pourquoi une direction de transition', 'Démarrer sans attendre, transmettre sans perdre.', [
-            ('Démarrer sans attendre', 'L\'activité locale tourne dès le premier jour, sans attendre la fin d\'un recrutement.'),
-            ('Un profil du pays', 'Un dirigeant suisse, qui maîtrise les usages, les réseaux et les attentes locales.'),
-            ('Une passation préparée', 'Le dirigeant de transition prépare l\'arrivée de son successeur et lui transmet une organisation qui fonctionne.'),
+        text('Un partenariat stratégique', 'Une expérience démontrée, mise à votre disposition.', [
+            'Leadr s\'appuie sur un partenariat stratégique avec un cabinet spécialisé du management de transition, implanté en Suisse.',
+            'Ce partenariat donne accès à des dirigeants dont les compétences ont été démontrées au fil de longues années de missions, dans des contextes exigeants : direction d\'entité, réorganisation, redressement, croissance.',
+            'Leadr reste votre interlocuteur privilégié tout au long de la mission, de sa définition jusqu\'à la passation.'],
+            tone='sec-dark', aside='<strong>Toujours un profil suisse.</strong> Le dirigeant qui prend les commandes de votre activité en Suisse connaît le pays de l\'intérieur : ses usages, ses réseaux, ses attentes.'),
+        cols('Trois situations', 'Quand faire appel à un dirigeant de transition.', [
+            ('Démarrer', 'Lancer l\'entité suisse et la faire tourner avant le recrutement définitif.'),
+            ('Assurer la continuité', 'Remplacer un dirigeant absent ou parti, sans laisser l\'activité sans pilote.'),
+            ('Transformer', 'Piloter une réorganisation, un transfert d\'activité ou un redressement.'),
         ], tone='sec-white'),
-        cta('Besoin d\'une direction locale ?'),
+        rows('Fonctions couvertes', 'De la stratégie aux opérations.', [
+            ('Direction générale', 'Piloter l\'entité locale et représenter l\'entreprise en Suisse.'),
+            ('Direction commerciale', 'Construire et animer l\'équipe de vente, ouvrir les premiers comptes.'),
+            ('Direction financière', 'Tenir les comptes, la trésorerie et les relations bancaires.'),
+            ('Direction industrielle et des opérations', 'Lancer ou réorganiser la production, la logistique et les achats.'),
+            ('Ressources humaines', 'Recruter les profils clés et poser les bases de l\'organisation.'),
+        ]),
+        steps('Déroulement', 'Une mission en quatre temps.', [
+            ('Cadrer', 'Le périmètre, les objectifs et la durée de la mission.'),
+            ('Choisir le profil', 'Un dirigeant dont le parcours correspond à votre situation, présenté avant tout engagement.'),
+            ('Suivre', 'Des points réguliers tout au long de la mission, avec Leadr comme interlocuteur privilégié.'),
+            ('Transmettre', 'Une passation préparée, pour que votre successeur reprenne une organisation qui fonctionne.'),
+        ], tone='sec-white'),
+        cta('Besoin d\'une direction locale ?', 'Parlons-en en toute confidentialité.'),
     ])
 
 PAGES['cas-clients.html'] = dict(
@@ -549,8 +569,8 @@ FORM = f'''<section class="sec sec-white"><div class="wrap split">
 
 PAGES['contact.html'] = dict(
     title='Prendre rendez-vous · Leadr',
-    desc='Réservez un appel de prise de contact avec Luc Rohmer, fondateur de Leadr, ou présentez votre projet par écrit.',
-    body=[hero('Contact', 'Prenons rendez-vous.', 'Le plus simple : réservez directement un appel de prise de contact dans l\'agenda de Luc Rohmer, fondateur de Leadr. Vous préférez écrire ? Le formulaire est juste en dessous.', [(BOOK, 'Choisir un créneau'), ('#formulaire', 'Écrire un message')], small=True), FORM.replace('<section class="sec sec-white">', '<section class="sec sec-white" id="formulaire">', 1)])
+    desc='Réservez un appel de prise de contact avec Luc Rohmer, CEO de Leadr, ou présentez votre projet par écrit.',
+    body=[hero('Contact', 'Prenons rendez-vous.', 'Le plus simple : réservez directement un appel de prise de contact dans l\'agenda de Luc Rohmer, CEO de Leadr. Vous préférez écrire ? Le formulaire est juste en dessous.', [(BOOK, 'Choisir un créneau'), ('#formulaire', 'Écrire un message')], small=True), FORM.replace('<section class="sec sec-white">', '<section class="sec sec-white" id="formulaire">', 1)])
 
 PAGES['mentions-legales.html'] = dict(
     title='Mentions légales et confidentialité · Leadr',
@@ -558,7 +578,7 @@ PAGES['mentions-legales.html'] = dict(
     body=[
         hero('Informations légales', 'Mentions légales et confidentialité.', 'Les informations utiles sur l\'éditeur du site et sur l\'usage de vos données.', small=True),
         text('Éditeur', 'Leadr GmbH', [
-            'Leadr GmbH, Sternengasse 6, Bâle, Suisse. Numéro IDE : CHE-252.536.958.',
+            'Leadr GmbH, Sternengasse 6, 4051 Bâle, Suisse. Numéro IDE : CHE-252.536.958.',
             f'Responsable de la publication : Luc Rohmer. Contact : <a href="mailto:{EMAIL}">{EMAIL}</a>.',
             'Hébergement : Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis.'], tone='sec-white'),
         text('Vos données', 'Confidentialité.', [
@@ -590,8 +610,8 @@ def hero_home():
 def proof_strip():
     items = [('Société suisse', 'Leadr GmbH, basée à Bâle'),
              ('Trois directions', 'Vers la Suisse, vers la France, entre régions linguistiques'),
-             ('Clients industriels et technologiques', 'Industrie, technologies, transport et logistique'),
-             ('Un interlocuteur privilégié', 'Qui suit votre dossier de bout en bout')]
+             ('PME, PMI et ETI', 'Industrie, technologies, transport, services aux entreprises'),
+             ('Un réseau dans toute la Suisse', 'Construit sur le terrain, en Suisse romande et alémanique')]
     cs = ''.join(f'<div><strong>{a}</strong><span>{b}</span></div>' for a, b in items)
     return f'<section class="proof" aria-label="Leadr en bref"><div class="wrap proof-in">{cs}</div></section>'
 
@@ -637,7 +657,7 @@ def cases_grid():
 def further_strip():
     items = [('implantation.html', 'Implantation', 'Créer la structure locale au bon moment.'),
              ('relocalisation.html', 'Relocalisation', 'Déplacer une activité sans perdre le fil.'),
-             ('management-transition.html', 'Management de transition', 'Une direction sur place, le temps de recruter.')]
+             ('management-transition.html', 'Management de transition', 'Des dirigeants aguerris, grâce à un partenariat stratégique.')]
     cs = ''.join(f'<a href="{h}"><strong>{t}</strong><span>{d}</span></a>' for h, t, d in items)
     return f"""<section class="further"><div class="wrap further-in"><div><p class="kicker">Quand il faut aller plus loin</p>
   <p class="further-t">Pour une implantation durable, le transfert d'une activité ou une direction locale, nous réunissons les bons partenaires sous une coordination unique.</p></div>

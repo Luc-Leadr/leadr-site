@@ -459,3 +459,28 @@ h1, h2, h3, .st, .case-q, .qcard h3{overflow-wrap:break-word; hyphens:auto; -web
 .statement .st-who{margin-top:16px}
 @media (max-width:600px){ .statement .st{font-size:1.75rem} .statement{padding:40px 0} }
 .actions-soc .soc{width:52px; height:52px}
+
+/* ---------- v2.12 : motifs de fond discrets ---------- */
+.sec-alps, .st-graph, .cta{position:relative; overflow:hidden; isolation:isolate}
+.sec-alps{padding-bottom:clamp(120px, 12vw, 190px)}
+.sec-alps::before{content:""; position:absolute; left:0; right:0; bottom:0; height:clamp(320px, 31vw, 470px);
+  background:url(../img/alpes.jpg) 18% 100%/cover no-repeat; opacity:.85; pointer-events:none; z-index:-1;
+  -webkit-mask-image:linear-gradient(to top, #000 62%, transparent); mask-image:linear-gradient(to top, #000 62%, transparent)}
+.st-graph::before{content:""; position:absolute; bottom:0; right:max(var(--gutter), calc((100% - var(--wrap)) / 2 + var(--gutter)));
+  width:min(46%, 620px); height:88%; background:url(../img/structure.svg) right bottom/contain no-repeat; opacity:.17; pointer-events:none; z-index:-1}
+.cta::before{content:""; position:absolute; left:0; right:0; bottom:0; height:clamp(90px, 11vw, 170px);
+  background:url(../img/horizon.svg) 68% 100%/cover no-repeat; opacity:.07; pointer-events:none; z-index:-1}
+@media (max-width:900px){
+  .st-graph::before{width:72%; height:70%; opacity:.11; right:0}
+  .sec-alps{padding-bottom:170px}
+  .sec-alps::before{height:340px; background-position:16% 100%; opacity:.85}
+}
+@media (max-width:600px){
+  .st-graph::before{width:92%; height:58%; opacity:.09}
+  .sec-alps{padding-bottom:170px}
+  .sec-alps::before{height:300px; background-position:14% 100%}
+  .cta::before{height:80px}
+}
+.sec.sec-dark .aside{background:#2A2A2D; color:var(--paper)}
+.sec-dark .text-body p, .sec-dark .split-body p{color:#CFCAC0}
+.sec-dark .aside strong{color:#fff}
