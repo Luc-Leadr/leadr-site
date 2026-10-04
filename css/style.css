@@ -586,3 +586,67 @@ h3{font-weight:600; letter-spacing:-0.005em}
 #choisir .rows .row p{font-weight:700; color:var(--ink)}
 @media (max-width:1100px){ .fmts-mini{grid-template-columns:repeat(2, 1fr)} }
 @media (max-width:760px){ .fmts, .fmts-mini{grid-template-columns:1fr} .fmt{padding:24px 22px} }
+
+/* v2.22 · accueil : ouverture sombre (fond noir, textes blancs et gris clair) */
+.hero-home{background:var(--ink); color:#fff; border-bottom:0; position:relative; isolation:isolate}
+.hero-home .kicker{color:#FF4A58}
+.hero-home h1{color:#fff}
+.hero-home .lead{color:#C9C9CE}
+.hero-home .micro{color:#9A9AA1}
+.hero-home .btn-line{color:#fff; border-color:rgba(255,255,255,.7)}
+.hero-home .btn-line:hover{background:#fff; color:var(--ink); border-color:#fff}
+.hero-home .map .land{stroke:#8A8A90}
+.hero-home .map .fr{fill:#2C2C30}
+.hero-home .map .ch-w{fill:#46464C}
+.hero-home .map .ch-e{fill:#626269}
+.hero-home .map .ch-i{fill:#535359}
+.hero-home .map .lake{fill:#56656C}
+.hero-home .map .city circle{fill:#fff}
+.hero-home .map .city text{fill:#EDEDEF; stroke:var(--ink)}
+.hero-home .map .lbl{fill:#fff}
+.hero-home .map figcaption{color:#A9A9AF}
+.hero-home .map .sw{border-color:#B5B5BA}
+.hero-home .map .sw-w{background:#46464C}
+.hero-home .map .sw-e{background:#626269}
+.hero-home .map .sw-g{border-color:var(--red)}
+.hero-home + .proof .proof-in{border-top:1px solid var(--rule-dark)}
+
+
+/* v2.22 · en-tête sombre, logo blanc, sur tout le site */
+.site-header{background:var(--ink); border-bottom-color:#2E2E32; color:#fff}
+.site-header .nav ul a, .site-header .dd-btn{color:#ECECEE}
+.site-header .nav ul a:hover, .site-header .dd-btn:hover{border-color:#fff; color:#fff}
+.site-header .nav ul a[aria-current]{border-color:var(--red)}
+.site-header .nav-toggle span:not(.sr){background:#fff}
+.site-header .lang a{color:#9A9AA1}
+.site-header .lang a:hover{color:#fff}
+.site-header .lang a[aria-current]{color:#fff; border-bottom-color:var(--red)}
+.site-header .nav .dd{background:#232326; border-color:#3A3A3D; border-top-color:var(--red); box-shadow:0 18px 36px rgba(0,0,0,.4)}
+.site-header .nav .dd a{color:#ECECEE}
+.site-header .nav .dd a:hover, .site-header .nav .dd a:focus-visible{background:#2E2E32; color:#FF4A58}
+.site-header .nav .dd a[aria-current]{color:#FF4A58}
+@media (max-width:1199px){
+  .site-header{background:var(--ink)}
+  .site-header .nav{background:var(--ink); border-bottom-color:#2E2E32; box-shadow:0 12px 24px rgba(0,0,0,.35)}
+  .site-header .nav ul a{border-bottom-color:#333337}
+  .site-header .nav ul a:hover{border-bottom-color:#333337}
+  .site-header .nav ul a[aria-current], .site-header .has-dd.is-cur > .dd-btn{color:#FF4A58; border-bottom-color:#333337}
+  .site-header .dd-btn{border-bottom-color:#333337}
+  .site-header .nav .dd{background:none; border:0; border-left:2px solid #3A3A3D; box-shadow:none}
+  .site-header .nav .dd a:hover{background:none}
+  .site-header .lang a{border-color:#3A3A3D}
+  .site-header .lang a[aria-current]{border-color:#fff}
+}
+@media (min-width:901px) and (max-width:1199px){ .site-header .nav{border-left-color:#2E2E32} }
+@media (max-width:1199px){ .nav > ul{align-items:stretch} }
+@media (max-width:600px){ .site-header .nav{top:68px} }
+
+/* v2.22 · bloc « Un interlocuteur privilégié » sur fond noir, comme le profil LinkedIn */
+.person{background:var(--ink); color:#fff; border-top:0}
+.person .kicker{color:#FF4A58}
+.person h2{color:#fff}
+.person-txt p:not(.kicker){color:#C9C9CE}
+.person .portrait{box-shadow:0 0 0 5px #fff}
+.person .soc{border-color:#6A6A70; color:#fff}
+.person .link-line a{color:#fff}
+.person .link-line a:hover{color:#FF4A58}

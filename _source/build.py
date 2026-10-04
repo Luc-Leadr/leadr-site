@@ -58,8 +58,8 @@ def head(title, desc, slug):
 <link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/arimo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=2.21">
-<script src="js/main.js?v=2.21" defer></script>
+<link rel="stylesheet" href="css/style.css?v=2.22">
+<script src="js/main.js?v=2.22" defer></script>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -76,7 +76,7 @@ def header(slug):
     links += f'<li class="nav-extra"><a href="leadr.html"{cur if slug=="leadr.html" else ""}>Qui sommes-nous</a></li>'
     return f'''<header class="site-header">
   <div class="wrap header-in">
-    <a class="brand" href="index.html" aria-label="Leadr, accueil"><img src="{LOGO}" alt="Leadr" width="146" height="30"></a>
+    <a class="brand" href="index.html" aria-label="Leadr, accueil"><img src="{LOGO_W}" alt="Leadr" width="146" height="30"></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span><span class="sr">Menu</span></button>
     <nav id="nav" class="nav" aria-label="Navigation principale">
       <ul>{links}</ul>
@@ -883,6 +883,7 @@ _insert_before_cta('vers-la-france.html', [faq('Se développer en France : vos q
 _insert_before_cta('entre-regions-suisses.html', [faq('Franchir le Röstigraben : vos questions.', FAQ_RG, tone='sec-white'), faq_ld(FAQ_RG)])
 _insert_before_cta('reperes.html', [guides_block(intro='Des guides complets, mis à jour régulièrement, pour préparer votre arrivée sur le marché suisse (en français).')])
 _insert_before_cta('implantation.html', [guides_block(intro='Pour approfondir, nos guides détaillés (en français).')])
+_insert_before_cta('index.html', [guides_block(intro='Pour approfondir, nos guides détaillés (en français).')])  # v2.22
 
 REDIRECTS['delegation-commerciale'] = 'prospection-externalisee-suisse.html'
 REDIRECTS['privacy-policy'] = 'mentions-legales.html'
