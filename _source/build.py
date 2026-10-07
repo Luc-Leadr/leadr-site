@@ -58,8 +58,8 @@ def head(title, desc, slug):
 <link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/arimo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=2.22">
-<script src="js/main.js?v=2.22" defer></script>
+<link rel="stylesheet" href="css/style.css?v=2.23">
+<script src="js/main.js?v=2.23" defer></script>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -888,6 +888,19 @@ _insert_before_cta('index.html', [guides_block(intro='Pour approfondir, nos guid
 REDIRECTS['delegation-commerciale'] = 'prospection-externalisee-suisse.html'
 REDIRECTS['privacy-policy'] = 'mentions-legales.html'
 
+# v2.23 : adresses sans « .html » (anciennes adresses Framer, liens tapés à la main) redirigées vers la vraie page
+def _clean_url_redirects():
+    for _s in list(PAGES):
+        if _s == 'index.html':
+            continue
+        _b = _s[:-5]
+        REDIRECTS.setdefault(_b, _s)
+        if not PAGES[_s].get('fr_only'):
+            for _lg in ('de', 'en'):
+                REDIRECTS.setdefault(f'{_lg}/{_b}', f'{_lg}/{_s}')
+    for _lg in ('de', 'en'):
+        REDIRECTS.setdefault(f'{_lg}/index.html', f'{_lg}/')
+
 # ------------------------------------------------------------------ build
 
 _HY = re.compile(r"(?<![\w-])([A-Za-zÀ-ÿœŒ'’]+(?:-[A-Za-zÀ-ÿœŒ'’]+)+)(?![\w-])")
@@ -1092,11 +1105,12 @@ def build():
         for lg in ('de', 'en'):
             os.makedirs(os.path.join(OUT, lg), exist_ok=True)
             open(os.path.join(OUT, lg, slug), 'w', encoding='utf-8').write(finish(localize(doc, lg, slug), slug, lg))
+    _clean_url_redirects()
     json.dump({'redirects': [{'source': '/' + a, 'destination': '/' + b, 'permanent': True} for a, b in REDIRECTS.items()],
                'headers': [{'source': '/(.*)', 'has': [{'type': 'host', 'value': 'leadr-site.vercel.app'}],
                             'headers': [{'key': 'X-Robots-Tag', 'value': 'noindex, nofollow'}]}] + VERCEL_HEADERS},
               open(os.path.join(OUT, 'vercel.json'), 'w'), indent=2)
-    urls = ''.join(f'<url><loc>https://www.leadr.ch/{p}{"" if s=="index.html" else s}</loc><lastmod>2026-10-02</lastmod></url>' for s in PAGES for p in (('',) if PAGES[s].get('fr_only') else ('', 'de/', 'en/')))
+    urls = ''.join(f'<url><loc>https://www.leadr.ch/{p}{"" if s=="index.html" else s}</loc><lastmod>2026-10-07</lastmod></url>' for s in PAGES for p in (('',) if PAGES[s].get('fr_only') else ('', 'de/', 'en/')))
     open(os.path.join(OUT, 'sitemap.xml'), 'w').write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>')
     open(os.path.join(OUT, '404.html'), 'w', encoding='utf-8').write(page_404())
     open(os.path.join(OUT, 'robots.txt'), 'w').write('User-agent: *\nAllow: /\nSitemap: https://www.leadr.ch/sitemap.xml\n')

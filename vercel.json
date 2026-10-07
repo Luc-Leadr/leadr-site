@@ -44,6 +44,241 @@
       "source": "/privacy-policy",
       "destination": "/mentions-legales.html",
       "permanent": true
+    },
+    {
+      "source": "/vers-la-suisse",
+      "destination": "/vers-la-suisse.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/vers-la-suisse",
+      "destination": "/de/vers-la-suisse.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/vers-la-suisse",
+      "destination": "/en/vers-la-suisse.html",
+      "permanent": true
+    },
+    {
+      "source": "/vers-la-france",
+      "destination": "/vers-la-france.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/vers-la-france",
+      "destination": "/de/vers-la-france.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/vers-la-france",
+      "destination": "/en/vers-la-france.html",
+      "permanent": true
+    },
+    {
+      "source": "/entre-regions-suisses",
+      "destination": "/entre-regions-suisses.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/entre-regions-suisses",
+      "destination": "/de/entre-regions-suisses.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/entre-regions-suisses",
+      "destination": "/en/entre-regions-suisses.html",
+      "permanent": true
+    },
+    {
+      "source": "/methode",
+      "destination": "/methode.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/methode",
+      "destination": "/de/methode.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/methode",
+      "destination": "/en/methode.html",
+      "permanent": true
+    },
+    {
+      "source": "/leadr",
+      "destination": "/leadr.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/leadr",
+      "destination": "/de/leadr.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/leadr",
+      "destination": "/en/leadr.html",
+      "permanent": true
+    },
+    {
+      "source": "/premier-rendez-vous",
+      "destination": "/premier-rendez-vous.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/premier-rendez-vous",
+      "destination": "/de/premier-rendez-vous.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/premier-rendez-vous",
+      "destination": "/en/premier-rendez-vous.html",
+      "permanent": true
+    },
+    {
+      "source": "/implantation",
+      "destination": "/implantation.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/implantation",
+      "destination": "/de/implantation.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/implantation",
+      "destination": "/en/implantation.html",
+      "permanent": true
+    },
+    {
+      "source": "/relocalisation",
+      "destination": "/relocalisation.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/relocalisation",
+      "destination": "/de/relocalisation.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/relocalisation",
+      "destination": "/en/relocalisation.html",
+      "permanent": true
+    },
+    {
+      "source": "/management-transition",
+      "destination": "/management-transition.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/management-transition",
+      "destination": "/de/management-transition.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/management-transition",
+      "destination": "/en/management-transition.html",
+      "permanent": true
+    },
+    {
+      "source": "/cas-clients",
+      "destination": "/cas-clients.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/cas-clients",
+      "destination": "/de/cas-clients.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/cas-clients",
+      "destination": "/en/cas-clients.html",
+      "permanent": true
+    },
+    {
+      "source": "/reperes",
+      "destination": "/reperes.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/reperes",
+      "destination": "/de/reperes.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/reperes",
+      "destination": "/en/reperes.html",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/contact",
+      "destination": "/de/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/contact",
+      "destination": "/en/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/mentions-legales",
+      "destination": "/mentions-legales.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/mentions-legales",
+      "destination": "/de/mentions-legales.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/mentions-legales",
+      "destination": "/en/mentions-legales.html",
+      "permanent": true
+    },
+    {
+      "source": "/implantation-suisse-pme-francaises",
+      "destination": "/implantation-suisse-pme-francaises.html",
+      "permanent": true
+    },
+    {
+      "source": "/prospection-externalisee-suisse",
+      "destination": "/prospection-externalisee-suisse.html",
+      "permanent": true
+    },
+    {
+      "source": "/marketing-externalise-suisse",
+      "destination": "/marketing-externalise-suisse.html",
+      "permanent": true
+    },
+    {
+      "source": "/formats",
+      "destination": "/formats.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/formats",
+      "destination": "/de/formats.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/formats",
+      "destination": "/en/formats.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/index.html",
+      "destination": "/de/",
+      "permanent": true
+    },
+    {
+      "source": "/en/index.html",
+      "destination": "/en/",
+      "permanent": true
     }
   ],
   "headers": [
