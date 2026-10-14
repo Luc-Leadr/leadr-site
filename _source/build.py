@@ -58,8 +58,8 @@ def head(title, desc, slug):
 <link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/arimo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=2.23">
-<script src="js/main.js?v=2.23" defer></script>
+<link rel="stylesheet" href="css/style.css?v=2.24">
+<script src="js/main.js?v=2.24" defer></script>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -711,7 +711,7 @@ def _load(lg):
     return json.load(open(f'i18n/{lg}.json', encoding='utf-8'))
 TR = {'de': _load('de'), 'en': _load('en')}
 LOCALE = {'fr': 'fr_CH', 'de': 'de_CH', 'en': 'en_GB'}
-WA_TXT = {'fr': 'Bonjour%20Luc%2C%20je%20viens%20du%20site%20leadr.ch.', 'de': 'Guten%20Tag%20Luc%2C%20ich%20komme%20von%20der%20Website%20leadr.ch.', 'en': 'Hello%20Luc%2C%20I%20found%20you%20through%20leadr.ch.'}
+WA_TXT = {'fr': 'Bonjour%20Luc%2C%20je%20viens%20du%20site%20leadr.ch.', 'de': 'Guten%20Tag%20Luc%2C%20ich%20habe%20Ihre%20Website%20leadr.ch%20besucht.', 'en': 'Hello%20Luc%2C%20I%20found%20you%20through%20leadr.ch.'}
 MISSING = set()
 
 def localize(doc, lg, slug):
