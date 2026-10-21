@@ -58,8 +58,8 @@ def head(title, desc, slug):
 <link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/arimo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=2.29">
-<script src="js/main.js?v=2.29" defer></script>
+<link rel="stylesheet" href="css/style.css?v=2.30">
+<script src="js/main.js?v=2.30" defer></script>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
