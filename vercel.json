@@ -286,6 +286,21 @@
       "permanent": true
     },
     {
+      "source": "/distributeur-france",
+      "destination": "/distributeur-france.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/distributeur-france",
+      "destination": "/de/distributeur-france.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/distributeur-france",
+      "destination": "/en/distributeur-france.html",
+      "permanent": true
+    },
+    {
       "source": "/de/index.html",
       "destination": "/de/",
       "permanent": true

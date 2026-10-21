@@ -58,8 +58,8 @@ def head(title, desc, slug):
 <link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/arimo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=2.28">
-<script src="js/main.js?v=2.28" defer></script>
+<link rel="stylesheet" href="css/style.css?v=2.29">
+<script src="js/main.js?v=2.29" defer></script>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -956,6 +956,7 @@ def seo_ld(slug, lg):
         items = [(HOME[lg], pre)]
         if slug in FR_ONLY: items.append((tr('Repères'), pre + 'reperes.html'))
         if slug == 'distributeur-suisse.html': items.append((tr('Vers la Suisse'), pre + 'vers-la-suisse.html'))
+        if slug == 'distributeur-france.html': items.append((tr('Vers la France'), pre + 'vers-la-france.html'))
         items.append((tr(BC_LABEL.get(slug, slug)), pre + slug))
         el = []
         for i, (n, u) in enumerate(items):
@@ -1142,8 +1143,60 @@ _b.insert(_i + 1, '<section class="sec"><div class="wrap split">'
           '<p class="link-line"><a href="distributeur-suisse.html">Comment trouver un distributeur en Suisse</a></p></div>'
           '</div></section>')
 
+
+# ------------------------------------------------------------------ v2.29 : trouver un distributeur en France (entreprises suisses)
+FAQ_DIST_FR = [
+    ('Quelle exclusivité accorder au distributeur ?', 'Elle n\'est pas automatique. En France, l\'exclusivité se discute souvent par région, par réseau ou par gamme, pour une durée limitée et liée à des objectifs de ventes.'),
+    ('Quelle documentation prévoir en français ?', 'En France, les notices, modes d\'emploi et conditions de garantie destinés aux clients doivent être rédigés en français. Vos fiches produits et vos supports de présentation doivent aussi parler aux acheteurs français. Nous vous accompagnons dans leur adaptation, pour qu\'ils ne soient pas seulement traduits.'),
+    ('Qui rédige le contrat de distribution ?', 'Un avocat ou un juriste spécialisé dans le droit français de la distribution, avec qui nous vous mettons en relation. En France, la fin d\'une relation commerciale établie est strictement encadrée : un contrat bien rédigé dès le départ vous protège. Nous assurons tout le suivi jusqu\'à la signature.'),
+    ('Par quelle région commencer ?', 'Par celle où vos clients sont concentrés. Selon votre secteur, un distributeur national ou plusieurs distributeurs régionaux conviennent mieux. Nous vous aidons à faire ce choix dès la préparation.'),
+    ('Que faire si aucun distributeur ne convient ?', 'Nous vous le disons et nous vous expliquons pourquoi. Les retours recueillis montrent ce qu\'il faut ajuster, ou si une autre voie est plus adaptée.'),
+]
+
+PAGES['distributeur-france.html'] = dict(
+    title='Comment trouver un distributeur en France · Leadr',
+    desc='Vendre en France sans y créer de filiale : Leadr trouve les distributeurs français capables de porter l\'offre des entreprises suisses, vérifie les normes qui s\'appliquent à leurs produits et accompagne le lancement.',
+    body=[
+        hero('Vers la France', 'Comment trouver un distributeur en France',
+             'Vendre en France ne demande pas toujours d\'y créer une filiale ni d\'y embaucher. Un distributeur bien choisi connaît déjà vos clients, leurs habitudes d\'achat et leur région, et assure la livraison et le service. Nous le trouvons pour vous, nous vous le présentons et nous restons votre relais sur place.',
+             [('contact.html', 'Prendre rendez-vous'), ('#demarche', 'Voir la démarche')]),
+        text('Pour qui ?', 'Des fabricants suisses dont les produits se vendent par des distributeurs spécialisés.', [
+            'Cette démarche s\'adresse aux fabricants suisses, PME, PMI et ETI, qui vendent déjà leurs produits en Suisse par l\'intermédiaire de distributeurs, de grossistes ou d\'installateurs, et qui veulent reproduire ce modèle en France.',
+            'Par exemple, un fabricant d\'instruments de mesure qui vend par des distributeurs techniques, un fabricant d\'équipements pour le bâtiment qui passe par les négoces et les installateurs, ou un éditeur de logiciels professionnels qui s\'appuie sur des intégrateurs.',
+            'Le marché français est bien plus grand que le marché suisse, mais il est aussi plus fragmenté : réseaux nationaux, distributeurs régionaux, centrales d\'achat. Vous n\'avez ni le temps ni les contacts pour trouver seul le bon partenaire. C\'est là que nous intervenons.'],
+            tone='sec-white', aside='<strong>Un distributeur, c\'est quoi ?</strong> Une entreprise française qui achète vos produits, les stocke, les revend à ses propres clients et en assure le service. Vous n\'avez qu\'un seul client à facturer en France, et il connaît déjà son marché.'),
+        rows('Notre rôle', 'Votre relais en France, pas seulement un carnet d\'adresses.', [
+            ('Aucune structure à créer', 'Pas de filiale française, pas de bureau, pas de salarié à recruter pour lancer vos ventes. Votre distributeur porte l\'activité commerciale, nous assurons le lien.'),
+            ('Des produits en règle dès le départ', 'Marquage CE, normes européennes et françaises, règles propres à votre secteur : nous vérifions ce qui s\'applique à vos produits avant de les présenter, pour que votre distributeur puisse les vendre sans mauvaise surprise.'),
+            ('Un interlocuteur qui connaît les deux pays', 'Nous parlons votre langue et celle de vos distributeurs, nous connaissons les usages commerciaux français et nous rencontrons vos partenaires quand il le faut.'),
+            ('Une démarche prise en charge de bout en bout', 'Recherche, prise de contact, rencontres, accompagnement de l\'accord avec un avocat ou un juriste spécialisé, puis lancement. Vous n\'avez pas à coordonner plusieurs prestataires.'),
+            ('Un lancement suivi dans la durée', 'Pendant une durée convenue ensemble, nous accompagnons le démarrage de votre distributeur et restons le contact privilégié entre vous et lui : points réguliers, questions du quotidien, évolution des règles, nouveaux produits à introduire.'),
+        ], intro='Notre rôle ne s\'arrête pas à vous transmettre des contacts. Nous préparons votre arrivée sur le marché français, nous accompagnons le lancement de votre distributeur et nous restons à vos côtés ensuite. Vous n\'avez donc ni filiale à créer ni salarié à embaucher.'),
+        steps('Notre démarche', 'Six étapes, de la préparation au suivi.', [
+            ('Préparer votre offre', 'Choisir avec vous les produits à proposer en premier, vérifier les normes européennes et françaises qui s\'y appliquent, puis définir les conditions à accorder au distributeur.' + _RV + 'la liste des adaptations à prévoir avant de vendre.'),
+            ('Repérer les distributeurs', 'Recenser les distributeurs, grossistes et intégrateurs actifs dans votre secteur, réseaux nationaux comme distributeurs régionaux, puis vérifier lesquels correspondent à votre offre.' + _RV + 'une sélection argumentée, distributeur par distributeur.'),
+            ('Présenter votre offre', 'Contacter les distributeurs retenus, mesurer leur intérêt et recueillir leurs questions et leurs objections.' + _RV + 'leurs retours sur vos produits, vos prix et la concurrence déjà en place.'),
+            ('Organiser les rencontres', 'Réunir vos équipes et les distributeurs les plus intéressés, en France ou en visioconférence.' + _RV + 'des rencontres préparées, avec des interlocuteurs qui connaissent déjà votre offre.'),
+            ('Accompagner l\'accord', 'Préparer la négociation à vos côtés et vous mettre en relation avec un avocat ou un juriste spécialisé dans le droit français. Le contrat est signé directement entre vous et votre distributeur.' + _RV + 'un accompagnement jusqu\'à la signature.'),
+            ('Lancer et suivre', 'Accompagner le démarrage de votre distributeur : premières commandes, présentation de vos produits à ses équipes, supports adaptés au marché français. Ensuite, nous restons votre relais pendant une durée convenue ensemble, selon vos attentes.'),
+        ], tone='sec-white').replace('<section class="sec ', '<section id="demarche" class="sec ', 1).replace('class="steps"', 'class="steps steps-6"'),
+        statement('Nous travaillons pour le fabricant, jamais pour le distributeur.',
+                  'Nous n\'achetons pas vos produits, nous ne les stockons pas et nous ne les vendons pas à votre place. Notre rôle est de trouver le bon partenaire, pas le premier qui dit oui.'),
+        faq('Trouver un distributeur en France : vos questions.', FAQ_DIST_FR, tone='sec-white'), faq_ld(FAQ_DIST_FR),
+        cta('Parlons de votre projet de distribution en France.', 'Un premier échange pour vérifier si la distribution est la bonne voie pour votre offre.'),
+    ])
+BC_LABEL['distributeur-france.html'] = 'Trouver un distributeur en France'
+
+_b = PAGES['vers-la-france.html']['body']
+_i = next(k for k, x in enumerate(_b) if 'class="cases"' in x)
+_b.insert(_i + 1, '<section class="sec"><div class="wrap split">'
+          '<div class="split-head"><p class="kicker">Distribution</p><h2>Trouver un distributeur en France.</h2></div>'
+          '<div class="split-body prose"><p>Un distributeur français bien choisi peut porter votre offre dès le départ. Nous le trouvons pour vous, nous vérifions les règles qui s\'appliquent à vos produits et nous accompagnons son lancement.</p>'
+          '<p class="link-line"><a href="distributeur-france.html">Comment trouver un distributeur en France</a></p></div>'
+          '</div></section>')
+
 # lien dans le pied de page
-FOOT = FOOT.replace('<li><a href="formats.html">Formats d\'intervention</a></li>', '<li><a href="formats.html">Formats d\'intervention</a></li><li><a href="distributeur-suisse.html">Trouver un distributeur</a></li>')
+FOOT = FOOT.replace('<li><a href="formats.html">Formats d\'intervention</a></li>', '<li><a href="formats.html">Formats d\'intervention</a></li><li><a href="distributeur-suisse.html">Distributeur en Suisse</a></li><li><a href="distributeur-france.html">Distributeur en France</a></li>')
 
 
 def build():
