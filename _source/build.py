@@ -58,8 +58,8 @@ def head(title, desc, slug):
 <link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/arimo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=2.26">
-<script src="js/main.js?v=2.26" defer></script>
+<link rel="stylesheet" href="css/style.css?v=2.28">
+<script src="js/main.js?v=2.28" defer></script>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -1100,21 +1100,31 @@ FAQ_DIST = [
 _RV = '<br><strong>Ce que vous recevez :</strong> '
 PAGES['distributeur-suisse.html'] = dict(
     title='Comment trouver un distributeur en Suisse · Leadr',
-    desc='Vendre en Suisse sans y créer de société. Leadr identifie, qualifie et vous présente les distributeurs suisses capables de porter votre offre, en Romandie et en Suisse alémanique.',
+    desc='Vendre en Suisse sans y créer de société : Leadr trouve les distributeurs suisses capables de porter votre offre, vérifie les normes qui s\'appliquent à vos produits et accompagne leur lancement.',
     body=[
         hero('Vers la Suisse', 'Comment trouver un distributeur en Suisse',
-             'Vendre en Suisse ne demande pas toujours d\'y créer une société. Un distributeur bien choisi connaît déjà vos clients, parle leur langue et assure la livraison et le service. Nous l\'identifions, nous le qualifions et nous vous le présentons.',
+             'Vendre en Suisse ne demande pas toujours d\'y créer une société ni d\'y embaucher. Un distributeur bien choisi connaît déjà vos clients, parle leur langue et assure la livraison et le service. Nous le trouvons pour vous, nous vous le présentons et nous restons votre relais sur place.',
              [('contact.html', 'Prendre rendez-vous'), ('#demarche', 'Voir la démarche')]),
-        text('Pour qui ?', 'Des fabricants dont l\'offre se vend par un réseau.', [
-            'Fabricants et éditeurs français, PME, PMI et ETI, dont l\'offre se vend par des revendeurs, des installateurs ou des intégrateurs : équipements techniques, bâtiment, industrie, produits professionnels.'], tone='sec-white'),
-        steps('Notre démarche', 'Six étapes, du cadrage au suivi.', [
-            ('Cadrer votre offre', 'Choisir les produits à proposer en premier, les conditions que vous êtes prêt à accorder et le profil du distributeur recherché.'),
-            ('Cartographier le marché', 'Recenser les distributeurs, grossistes et intégrateurs actifs dans votre secteur, en Romandie et en Suisse alémanique, puis les qualifier.' + _RV + 'une cartographie qualifiée, distributeur par distributeur.'),
-            ('Présenter votre offre', 'Approcher les plus pertinents dans leur langue, mesurer leur intérêt et recueillir leurs objections.' + _RV + 'les retours du terrain sur vos prix, vos normes, les attentes et les concurrents présents.'),
-            ('Organiser les rencontres', 'Réunir vos équipes et les distributeurs les plus intéressés, en Suisse ou à distance.' + _RV + 'des rencontres préparées, avec des interlocuteurs qui connaissent déjà votre offre.'),
-            ('Accompagner l\'accord', 'Préparer la négociation à vos côtés. Le contrat de distribution est conclu directement entre vous et votre distributeur.' + _RV + 'un accompagnement suivi jusqu\'à la signature.'),
-            ('Rester votre relais', 'Pendant une durée convenue ensemble, nous restons votre relais sur place et le contact privilégié entre vous et votre distributeur, selon ce que vous attendez de nous.'),
-        ]).replace('<section class="sec ', '<section id="demarche" class="sec ', 1).replace('class="steps"', 'class="steps steps-6"'),
+        text('Pour qui ?', 'Des fabricants dont les produits se vendent par des distributeurs spécialisés.', [
+            'Cette démarche s\'adresse aux fabricants français, PME, PMI et ETI, qui vendent déjà leurs produits en France par l\'intermédiaire de distributeurs, de grossistes ou d\'installateurs, et qui veulent reproduire ce modèle en Suisse.',
+            'Par exemple, un fabricant d\'équipements de chauffage ou de traitement de l\'eau qui vend aux installateurs par des grossistes, un fabricant de machines qui passe par des revendeurs spécialisés, ou un éditeur de logiciels professionnels qui s\'appuie sur des intégrateurs.',
+            'Vos produits sont prêts et votre prix tient la comparaison, mais vous n\'avez ni le temps ni les contacts pour chercher seul le bon partenaire de l\'autre côté de la frontière. C\'est là que nous intervenons.'],
+            tone='sec-white', aside='<strong>Un distributeur, c\'est quoi ?</strong> Une entreprise suisse qui achète vos produits, les stocke, les revend à ses propres clients et en assure le service. Vous n\'avez qu\'un seul client à facturer en Suisse, et il connaît déjà votre marché.'),
+        rows('Notre rôle', 'Votre relais en Suisse, pas seulement un carnet d\'adresses.', [
+            ('Aucune structure à créer', 'Pas de société suisse, pas de bureau, pas de salarié à recruter pour lancer vos ventes. Votre distributeur porte l\'activité commerciale, nous assurons le lien.'),
+            ('Des produits en règle dès le départ', 'Normes techniques, prescriptions fédérales, exigences propres à chaque canton : nous vérifions ce qui s\'applique à vos produits avant de les présenter, pour que votre distributeur puisse les vendre sans mauvaise surprise.'),
+            ('Un interlocuteur sur place', 'Nous parlons la langue de vos distributeurs, nous connaissons leurs usages et nous les rencontrons quand il le faut.'),
+            ('Une démarche prise en charge de bout en bout', 'Recherche, prise de contact, rencontres, accompagnement de l\'accord avec un avocat ou un juriste spécialisé, puis lancement. Vous n\'avez pas à coordonner plusieurs prestataires.'),
+            ('Un lancement suivi dans la durée', 'Pendant une durée convenue ensemble, nous accompagnons le démarrage de votre distributeur et restons le contact privilégié entre vous et lui : points réguliers, questions du quotidien, évolution des règles, nouveaux produits à introduire.'),
+        ], intro='Notre rôle ne s\'arrête pas à vous transmettre des contacts. Nous préparons votre arrivée sur le marché, nous accompagnons le lancement de votre distributeur et nous restons présents en Suisse pour vous. Vous n\'avez donc ni bureau à ouvrir ni salarié à embaucher.'),
+        steps('Notre démarche', 'Six étapes, de la préparation au suivi.', [
+            ('Préparer votre offre', 'Choisir avec vous les produits à proposer en premier, vérifier les normes et les règles suisses qui s\'y appliquent, canton par canton, puis définir les conditions à accorder au distributeur.' + _RV + 'la liste des adaptations à prévoir avant de vendre.'),
+            ('Repérer les distributeurs', 'Recenser les distributeurs, grossistes et intégrateurs actifs dans votre secteur, en Suisse romande et en Suisse alémanique, puis vérifier lesquels correspondent à votre offre.' + _RV + 'une sélection argumentée, distributeur par distributeur.'),
+            ('Présenter votre offre', 'Contacter les distributeurs retenus dans leur langue, mesurer leur intérêt et recueillir leurs questions et leurs objections.' + _RV + 'leurs retours sur vos produits, vos prix et la concurrence déjà en place.'),
+            ('Organiser les rencontres', 'Réunir vos équipes et les distributeurs les plus intéressés, en Suisse ou en visioconférence.' + _RV + 'des rencontres préparées, avec des interlocuteurs qui connaissent déjà votre offre.'),
+            ('Accompagner l\'accord', 'Préparer la négociation à vos côtés et vous mettre en relation avec un avocat ou un juriste spécialisé dans le marché suisse. Le contrat est signé directement entre vous et votre distributeur.' + _RV + 'un accompagnement jusqu\'à la signature.'),
+            ('Lancer et suivre', 'Accompagner le démarrage de votre distributeur : premières commandes, présentation de vos produits à ses équipes, supports en français ou en allemand. Ensuite, nous restons votre relais sur place pendant une durée convenue ensemble, selon vos attentes.'),
+        ], tone='sec-white').replace('<section class="sec ', '<section id="demarche" class="sec ', 1).replace('class="steps"', 'class="steps steps-6"'),
         statement('Nous travaillons pour le fabricant, jamais pour le distributeur.',
                   'Nous n\'achetons pas vos produits, nous ne les stockons pas et nous ne les vendons pas à votre place. Notre rôle est de trouver le bon partenaire, pas le premier qui dit oui.'),
         faq('Trouver un distributeur : vos questions.', FAQ_DIST, tone='sec-white'), faq_ld(FAQ_DIST),
@@ -1128,7 +1138,7 @@ _b = PAGES['vers-la-suisse.html']['body']
 _i = next(k for k, x in enumerate(_b) if 'class="cases"' in x)
 _b.insert(_i + 1, '<section class="sec"><div class="wrap split">'
           '<div class="split-head"><p class="kicker">Distribution</p><h2>Trouver un distributeur en Suisse.</h2></div>'
-          '<div class="split-body prose"><p>Un distributeur suisse bien choisi peut porter votre offre dès le départ. Nous l\'identifions, nous le qualifions et nous vous le présentons.</p>'
+          '<div class="split-body prose"><p>Un distributeur suisse bien choisi peut porter votre offre dès le départ. Nous le trouvons pour vous, nous vérifions les règles qui s\'appliquent à vos produits et nous accompagnons son lancement.</p>'
           '<p class="link-line"><a href="distributeur-suisse.html">Comment trouver un distributeur en Suisse</a></p></div>'
           '</div></section>')
 
