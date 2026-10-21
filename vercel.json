@@ -51,8 +51,18 @@
       "permanent": true
     },
     {
+      "source": "/de/in-der-schweiz-verkaufen",
+      "destination": "/de/in-der-schweiz-verkaufen.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/vers-la-suisse.html",
+      "destination": "/de/in-der-schweiz-verkaufen.html",
+      "permanent": true
+    },
+    {
       "source": "/de/vers-la-suisse",
-      "destination": "/de/vers-la-suisse.html",
+      "destination": "/de/in-der-schweiz-verkaufen.html",
       "permanent": true
     },
     {
@@ -66,8 +76,18 @@
       "permanent": true
     },
     {
+      "source": "/de/expansion-frankreich",
+      "destination": "/de/expansion-frankreich.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/vers-la-france.html",
+      "destination": "/de/expansion-frankreich.html",
+      "permanent": true
+    },
+    {
       "source": "/de/vers-la-france",
-      "destination": "/de/vers-la-france.html",
+      "destination": "/de/expansion-frankreich.html",
       "permanent": true
     },
     {
@@ -81,8 +101,18 @@
       "permanent": true
     },
     {
+      "source": "/de/zwischen-sprachregionen",
+      "destination": "/de/zwischen-sprachregionen.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/entre-regions-suisses.html",
+      "destination": "/de/zwischen-sprachregionen.html",
+      "permanent": true
+    },
+    {
       "source": "/de/entre-regions-suisses",
-      "destination": "/de/entre-regions-suisses.html",
+      "destination": "/de/zwischen-sprachregionen.html",
       "permanent": true
     },
     {
@@ -111,8 +141,18 @@
       "permanent": true
     },
     {
+      "source": "/de/ueber-uns",
+      "destination": "/de/ueber-uns.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/leadr.html",
+      "destination": "/de/ueber-uns.html",
+      "permanent": true
+    },
+    {
       "source": "/de/leadr",
-      "destination": "/de/leadr.html",
+      "destination": "/de/ueber-uns.html",
       "permanent": true
     },
     {
@@ -126,8 +166,18 @@
       "permanent": true
     },
     {
+      "source": "/de/erstgespraech",
+      "destination": "/de/erstgespraech.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/premier-rendez-vous.html",
+      "destination": "/de/erstgespraech.html",
+      "permanent": true
+    },
+    {
       "source": "/de/premier-rendez-vous",
-      "destination": "/de/premier-rendez-vous.html",
+      "destination": "/de/erstgespraech.html",
       "permanent": true
     },
     {
@@ -141,8 +191,18 @@
       "permanent": true
     },
     {
+      "source": "/de/firmengruendung",
+      "destination": "/de/firmengruendung.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/implantation.html",
+      "destination": "/de/firmengruendung.html",
+      "permanent": true
+    },
+    {
       "source": "/de/implantation",
-      "destination": "/de/implantation.html",
+      "destination": "/de/firmengruendung.html",
       "permanent": true
     },
     {
@@ -156,8 +216,18 @@
       "permanent": true
     },
     {
+      "source": "/de/standortverlagerung",
+      "destination": "/de/standortverlagerung.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/relocalisation.html",
+      "destination": "/de/standortverlagerung.html",
+      "permanent": true
+    },
+    {
       "source": "/de/relocalisation",
-      "destination": "/de/relocalisation.html",
+      "destination": "/de/standortverlagerung.html",
       "permanent": true
     },
     {
@@ -171,8 +241,18 @@
       "permanent": true
     },
     {
+      "source": "/de/interim-management",
+      "destination": "/de/interim-management.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/management-transition.html",
+      "destination": "/de/interim-management.html",
+      "permanent": true
+    },
+    {
       "source": "/de/management-transition",
-      "destination": "/de/management-transition.html",
+      "destination": "/de/interim-management.html",
       "permanent": true
     },
     {
@@ -186,8 +266,18 @@
       "permanent": true
     },
     {
+      "source": "/de/fallbeispiele",
+      "destination": "/de/fallbeispiele.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/cas-clients.html",
+      "destination": "/de/fallbeispiele.html",
+      "permanent": true
+    },
+    {
       "source": "/de/cas-clients",
-      "destination": "/de/cas-clients.html",
+      "destination": "/de/fallbeispiele.html",
       "permanent": true
     },
     {
@@ -201,8 +291,18 @@
       "permanent": true
     },
     {
+      "source": "/de/wissenswertes",
+      "destination": "/de/wissenswertes.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/reperes.html",
+      "destination": "/de/wissenswertes.html",
+      "permanent": true
+    },
+    {
       "source": "/de/reperes",
-      "destination": "/de/reperes.html",
+      "destination": "/de/wissenswertes.html",
       "permanent": true
     },
     {
@@ -216,8 +316,18 @@
       "permanent": true
     },
     {
+      "source": "/de/kontakt",
+      "destination": "/de/kontakt.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/contact.html",
+      "destination": "/de/kontakt.html",
+      "permanent": true
+    },
+    {
       "source": "/de/contact",
-      "destination": "/de/contact.html",
+      "destination": "/de/kontakt.html",
       "permanent": true
     },
     {
@@ -231,8 +341,18 @@
       "permanent": true
     },
     {
+      "source": "/de/impressum",
+      "destination": "/de/impressum.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/mentions-legales.html",
+      "destination": "/de/impressum.html",
+      "permanent": true
+    },
+    {
       "source": "/de/mentions-legales",
-      "destination": "/de/mentions-legales.html",
+      "destination": "/de/impressum.html",
       "permanent": true
     },
     {
@@ -261,8 +381,18 @@
       "permanent": true
     },
     {
+      "source": "/de/mandatsformen",
+      "destination": "/de/mandatsformen.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/formats.html",
+      "destination": "/de/mandatsformen.html",
+      "permanent": true
+    },
+    {
       "source": "/de/formats",
-      "destination": "/de/formats.html",
+      "destination": "/de/mandatsformen.html",
       "permanent": true
     },
     {
@@ -276,8 +406,18 @@
       "permanent": true
     },
     {
+      "source": "/de/vertriebspartner-schweiz",
+      "destination": "/de/vertriebspartner-schweiz.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/distributeur-suisse.html",
+      "destination": "/de/vertriebspartner-schweiz.html",
+      "permanent": true
+    },
+    {
       "source": "/de/distributeur-suisse",
-      "destination": "/de/distributeur-suisse.html",
+      "destination": "/de/vertriebspartner-schweiz.html",
       "permanent": true
     },
     {
@@ -291,13 +431,38 @@
       "permanent": true
     },
     {
+      "source": "/de/vertriebspartner-frankreich",
+      "destination": "/de/vertriebspartner-frankreich.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/distributeur-france.html",
+      "destination": "/de/vertriebspartner-frankreich.html",
+      "permanent": true
+    },
+    {
       "source": "/de/distributeur-france",
-      "destination": "/de/distributeur-france.html",
+      "destination": "/de/vertriebspartner-frankreich.html",
       "permanent": true
     },
     {
       "source": "/en/distributeur-france",
       "destination": "/en/distributeur-france.html",
+      "permanent": true
+    },
+    {
+      "source": "/vendre-en-suisse-tva-douane",
+      "destination": "/vendre-en-suisse-tva-douane.html",
+      "permanent": true
+    },
+    {
+      "source": "/entreprise-suisse-s-implanter-en-france",
+      "destination": "/entreprise-suisse-s-implanter-en-france.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/markteintritt-frankreich",
+      "destination": "/de/markteintritt-frankreich.html",
       "permanent": true
     },
     {

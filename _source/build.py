@@ -1231,5 +1231,7 @@ def build():
     print('pages:', len(PAGES), 'x3 langues')
     for m in sorted(MISSING): print('NON TRADUIT', m)
 
+exec(open('v231.py', encoding='utf-8').read())  # v2.31 : SEO double visibilité
+
 if __name__ == '__main__':
     build()
