@@ -271,6 +271,21 @@
       "permanent": true
     },
     {
+      "source": "/distributeur-suisse",
+      "destination": "/distributeur-suisse.html",
+      "permanent": true
+    },
+    {
+      "source": "/de/distributeur-suisse",
+      "destination": "/de/distributeur-suisse.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/distributeur-suisse",
+      "destination": "/en/distributeur-suisse.html",
+      "permanent": true
+    },
+    {
       "source": "/de/index.html",
       "destination": "/de/",
       "permanent": true

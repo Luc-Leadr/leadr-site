@@ -650,3 +650,9 @@ h3{font-weight:600; letter-spacing:-0.005em}
 .person .soc{border-color:#6A6A70; color:#fff}
 .person .link-line a{color:#fff}
 .person .link-line a:hover{color:#FF4A58}
+/* v2.25 : six étapes sur deux lignes de trois */
+@media (min-width:901px){
+  .steps.steps-6{grid-template-columns:repeat(3, 1fr)}
+  .steps.steps-6 li:nth-child(4){padding-left:0; border-left:0}
+  .steps.steps-6 li:nth-child(n+4){border-top:1px solid var(--rule); margin-top:12px}
+}

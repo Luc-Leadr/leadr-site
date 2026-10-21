@@ -58,8 +58,8 @@ def head(title, desc, slug):
 <link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/arimo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=2.24">
-<script src="js/main.js?v=2.24" defer></script>
+<link rel="stylesheet" href="css/style.css?v=2.25">
+<script src="js/main.js?v=2.25" defer></script>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -955,6 +955,7 @@ def seo_ld(slug, lg):
         tr = (lambda x: x) if lg == 'fr' else (lambda x: TR[lg].get(x, x))
         items = [(HOME[lg], pre)]
         if slug in FR_ONLY: items.append((tr('Repères'), pre + 'reperes.html'))
+        if slug == 'distributeur-suisse.html': items.append((tr('Vers la Suisse'), pre + 'vers-la-suisse.html'))
         items.append((tr(BC_LABEL.get(slug, slug)), pre + slug))
         el = []
         for i, (n, u) in enumerate(items):
@@ -1010,7 +1011,8 @@ FORMATS = [
          who='Vous avez un besoin ponctuel : vérifier une conformité, rencontrer les bons décideurs, trancher une question de structure.',
          gets=['Une note de réponse claire, avec ses sources',
                'Selon le besoin, une liste nominative de décideurs et une approche préparée pour chacun',
-               'Des recommandations directement applicables par vos équipes']),
+               'Des recommandations directement applicables par vos équipes',
+               '<a href="distributeur-suisse.html">Par exemple, identifier et rencontrer les distributeurs suisses de votre secteur</a>']),
     dict(name='Antenne permanente', line='Votre présence commerciale sur le marché, mois après mois.', dur='Au mois, par paliers',
          who='Vous voulez des rendez-vous et des clients sur le marché visé, sans recruter ni créer de structure.',
          gets=['La préparation de votre offre : discours, supports en français et en allemand, prix en francs suisses',
@@ -1085,6 +1087,65 @@ _i = next(k for k, x in enumerate(_h) if 'Quatre temps, un seul objectif' in x)
 PAGES['index.html']['body'] = _h[:_i + 1] + [formats_home()] + _h[_i + 1:]
 PAGES['methode.html']['body'].insert(-1, f'<section class="sec sec-white"><div class="wrap"><p class="kicker">Formats d\'intervention</p><h2 class="w-narrow">Une méthode, quatre formats.</h2><p class="intro">Diagnostic, mission ciblée, antenne permanente ou implantation : la méthode s\'applique à chacun, à la mesure de votre besoin.</p><div class="fmts fmts-mini">{formats_cards(False)}</div><p class="link-line"><a href="formats.html">Voir le détail des formats</a></p></div></section>')
 
+
+# ------------------------------------------------------------------ v2.25 : trouver un distributeur en Suisse
+FAQ_DIST = [
+    ('Quelle exclusivité accorder au distributeur ?', 'Elle n\'est pas automatique. L\'exclusivité se discute par région, par gamme et pour une durée limitée, souvent liée à des objectifs de ventes.'),
+    ('Quelle documentation prévoir en allemand ?', 'En Suisse alémanique, vos fiches produits et vos conditions doivent exister en allemand. Nous vous indiquons ce qui est indispensable.'),
+    ('Qui rédige le contrat de distribution ?', 'Votre avocat ou votre juriste. Nous vous signalons les points propres au marché suisse.'),
+    ('Que faire si aucun distributeur ne convient ?', 'Nous vous le disons et nous vous expliquons pourquoi. Les retours recueillis montrent ce qu\'il faut ajuster, ou si une autre voie est plus adaptée.'),
+    ('Quelles régions de Suisse sont couvertes ?', 'La Suisse romande comme la Suisse alémanique, avec une approche dans la langue de chaque région.'),
+]
+
+PAGES['distributeur-suisse.html'] = dict(
+    title='Trouver un distributeur en Suisse · Leadr',
+    desc='Vendre en Suisse sans y créer de société. Leadr identifie, qualifie et vous présente les distributeurs suisses capables de porter votre offre, en Romandie et en Suisse alémanique.',
+    body=[
+        hero('Vers la Suisse', 'Trouver un distributeur en Suisse',
+             'Vendre en Suisse ne demande pas toujours d\'y créer une société. Un distributeur bien choisi connaît déjà vos clients, parle leur langue et assure la livraison et le service. Nous l\'identifions, nous le qualifions et nous vous le présentons.',
+             [('contact.html', 'Prendre rendez-vous'), ('#demarche', 'Voir la démarche')]),
+        text('Pour qui', 'Des fabricants dont l\'offre se vend par un réseau.', [
+            'Fabricants et éditeurs français, PME, PMI et ETI, dont l\'offre se vend par des revendeurs, des installateurs ou des intégrateurs : équipements techniques, bâtiment, industrie, produits professionnels.'], tone='sec-white'),
+        rows('Distributeur, agent ou filiale', 'Trois façons de vendre en Suisse.', [
+            ('Le distributeur', 'Il achète vos produits et les revend sous sa responsabilité. Vous n\'avez qu\'un seul client à facturer en Suisse.'),
+            ('L\'agent commercial', 'Il vend en votre nom, et vous facturez chaque client. Le droit suisse encadre fortement ce statut.'),
+            ('La filiale', 'Elle vous donne le contrôle complet, avec les coûts et les obligations d\'une société suisse.'),
+        ], note='Pour un premier pas sur le marché, le distributeur est souvent le choix le plus mesuré. Nous vérifions avec vous qu\'il convient à votre offre avant de commencer.'),
+        steps('Notre démarche', 'Six étapes, du cadrage au démarrage.', [
+            ('Cadrer votre offre', 'Choisir les produits à proposer en premier, les conditions que vous êtes prêt à accorder et le profil du distributeur recherché.'),
+            ('Cartographier le marché', 'Recenser les distributeurs, grossistes et intégrateurs actifs dans votre secteur, en Romandie et en Suisse alémanique, puis les qualifier.'),
+            ('Présenter votre offre', 'Approcher les plus pertinents dans leur langue, mesurer leur intérêt et recueillir leurs objections.'),
+            ('Organiser les rencontres', 'Réunir vos équipes et les distributeurs les plus intéressés, en Suisse ou à distance.'),
+            ('Accompagner l\'accord', 'Préparer la négociation à vos côtés. Le contrat de distribution est conclu directement entre vous et votre distributeur.'),
+            ('Suivre le démarrage', 'Rester en contact avec les deux parties pendant les premiers mois, pour que la relation tienne ses promesses.'),
+        ], tone='sec-white').replace('<section class="sec ', '<section id="demarche" class="sec ', 1).replace('class="steps"', 'class="steps steps-6"'),
+        cols('Ce que vous recevez', 'Des éléments concrets, à chaque étape.', [
+            ('Une cartographie qualifiée', 'Les distributeurs, grossistes et intégrateurs de votre secteur, analysés un par un.'),
+            ('Les retours du terrain', 'Prix, normes, attentes et concurrents présents, tels que les distributeurs les décrivent.'),
+            ('Des rencontres préparées', 'Avec les distributeurs les plus intéressés, en Suisse ou à distance.'),
+            ('Un accompagnement suivi', 'Jusqu\'à la signature, puis pendant le démarrage.'),
+        ], intro='Même sans accord signé, vous savez comment votre offre est perçue en Suisse et ce qu\'il faut ajuster.'),
+        statement('Nous travaillons pour le fabricant, jamais pour le distributeur.',
+                  'Nous n\'achetons pas vos produits, nous ne les stockons pas et nous ne les vendons pas à votre place. Notre rôle est de trouver le bon partenaire, pas le premier qui dit oui.'),
+        faq('Trouver un distributeur : vos questions.', FAQ_DIST, tone='sec-white'), faq_ld(FAQ_DIST),
+        guides_block(intro='Pour approfondir, nos guides détaillés (en français).', tone=''),
+        cta('Parlons de votre projet de distribution en Suisse.', 'Un premier échange pour vérifier si la distribution est la bonne voie pour votre offre.'),
+    ])
+BC_LABEL['distributeur-suisse.html'] = 'Trouver un distributeur en Suisse'
+
+# bloc de renvoi sur « Vers la Suisse », après les exemples de missions
+_b = PAGES['vers-la-suisse.html']['body']
+_i = next(k for k, x in enumerate(_b) if 'class="cases"' in x)
+_b.insert(_i + 1, '<section class="sec"><div class="wrap split">'
+          '<div class="split-head"><p class="kicker">Distribution</p><h2>Vendre en Suisse sans y créer de société.</h2></div>'
+          '<div class="split-body prose"><p>Un distributeur suisse bien choisi peut porter votre offre dès le départ. Nous l\'identifions, nous le qualifions et nous vous le présentons.</p>'
+          '<p class="link-line"><a href="distributeur-suisse.html">Trouver un distributeur en Suisse</a></p></div>'
+          '</div></section>')
+
+# lien dans le pied de page
+FOOT = FOOT.replace('<li><a href="formats.html">Formats d\'intervention</a></li>', '<li><a href="formats.html">Formats d\'intervention</a></li><li><a href="distributeur-suisse.html">Trouver un distributeur</a></li>')
+
+
 def build():
     if os.path.exists(OUT): shutil.rmtree(OUT)
     shutil.copytree('static', OUT)
@@ -1110,7 +1171,7 @@ def build():
                'headers': [{'source': '/(.*)', 'has': [{'type': 'host', 'value': 'leadr-site.vercel.app'}],
                             'headers': [{'key': 'X-Robots-Tag', 'value': 'noindex, nofollow'}]}] + VERCEL_HEADERS},
               open(os.path.join(OUT, 'vercel.json'), 'w'), indent=2)
-    urls = ''.join(f'<url><loc>https://www.leadr.ch/{p}{"" if s=="index.html" else s}</loc><lastmod>2026-10-07</lastmod></url>' for s in PAGES for p in (('',) if PAGES[s].get('fr_only') else ('', 'de/', 'en/')))
+    urls = ''.join(f'<url><loc>https://www.leadr.ch/{p}{"" if s=="index.html" else s}</loc><lastmod>2026-10-21</lastmod></url>' for s in PAGES for p in (('',) if PAGES[s].get('fr_only') else ('', 'de/', 'en/')))
     open(os.path.join(OUT, 'sitemap.xml'), 'w').write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>')
     open(os.path.join(OUT, '404.html'), 'w', encoding='utf-8').write(page_404())
     open(os.path.join(OUT, 'robots.txt'), 'w').write('User-agent: *\nAllow: /\nSitemap: https://www.leadr.ch/sitemap.xml\n')
